@@ -13,10 +13,74 @@
   </head>
   <body>
     <div id="content"></div>
-    <script type="text/babel" src="scripts/example.js"></script>
     <script type="text/babel">
       // To get started with this tutorial running your own code, simply remove
       // the script tag loading scripts/example.js and start writing code here.
+      var CommentBox = React.createClass({
+        getInitialState: function(){
+          return {data: []};
+        },
+        render: function() {
+          return (
+              <div className="commentBox">
+                Hello, world! I am a CommentBox.
+                <h1>Comments</h1>
+                <CommentList data={this.state.data} />
+                <CommentForm />
+              </div>//リアクトコンポーネントのインスタンスを返す。実際のDOMではない
+          );
+        }
+      });
+      ReactDOM.render({
+        // <CommentBox data={data} />,
+        <CommentBox url="api/comments" />,
+        document.getElementById('content')
+      });
+      var CommentList = React.createClass({
+        render: function(){
+          var commentNodes = this.props.data.map(function (comment){
+            return (
+              <Comment author={comment.author}>
+                {comment.text}
+              </Comment>
+            );
+          });
+          return (
+            <div className="commentList">
+            {commentNodes}
+              // <Comment author="pete Hunt">This is one comment</Comment>
+              // <Comment author="Jordan Walke">This is *another comment</Comment>
+            </div>
+          );
+        }
+      });
+      var CommentForm = React.createClass({
+        render: function(){
+          return (
+            <div className="commentForm">
+              Hello, world! I am a CommemntForm.
+            </div>
+          );
+        }
+      });
+      var Comment = React.createClass({
+        render: function(){
+          var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
+          return (
+            <div className="comment">
+              <h2 className="commentAuthor">
+                {this.props.author}
+              </h2>
+              <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
+            </div>
+          );
+        }
+      });
+      var data = [
+        {author: "pete Hunt", text: "this is one coment"},
+        {author: "Jordan Walke", text: "This is *another* comment"}
+      ];
+
     </script>
   </body>
 </html>
