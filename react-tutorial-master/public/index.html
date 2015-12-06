@@ -15,9 +15,10 @@
     <div id="content"></div>
     <script type="text/babel">
     var Divider = React.createClass({
+      this.porps.children = 質問;
     	render: function(){
     		return <div className="divider">
-    			<h2>text</h2>
+    			<h2>{this.props.children}</h2>
     			</div>
     	}
     });
