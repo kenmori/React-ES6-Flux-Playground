@@ -15,7 +15,8 @@
     <p>値を受け渡すことができる</p>
     <p>親コンポーネントの中に子コンポーネントを含めることができる</p>
     <p>子ノードを参照することができる</p>
-    <p>動的な値を参照することができる</p>
+    <p>動的な値を参照することができる(if)</p>
+    <p>動的な値を参照することができる(func)</p>
 
   <div id="container"></div>
 
@@ -37,9 +38,12 @@
           isComplete : true
         }
       },
+      isComplate : function(){
+        return true;
+      },
       render: function(){
         return (
-          <div className={ this.state.isComplete ? 'is-complete' : '' }>
+          <div className={ this.isComplate() ? 'is-complete' : '' }>
             { this.props.children }
           </div>
            //これを削除すると空divのみ
