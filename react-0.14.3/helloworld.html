@@ -6,84 +6,119 @@
     <script src="build/react.js"></script>
     <script src="build/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-    <style media="screen">
-      .comment-form {
-        background: #f0f0f0;
-        padding: 32px;
-      }
-      .comment-form input[type='text'] {
-          width: 80%;
-          padding: 8px;
-      }
-    </style>
   </head>
   <body>
-  <div id="container"></div>
-  <script type="text/babel">
+    <div id="example"></div>
+    <script type="text/babel">
+//#1
+      //既存のHTMLDOMを使ったコンポーネント
+      // React.render(
+      //   React.DOM.h1(
+      //     {
+      //       className: 'greeting'//classは予約後のためclassNameとなる
+      //     },
+      //     React.DOM.strong(null, 'Hello'),//第一引数にプロパティ、HTML属性の設定,第二引数にコンポーネントの子要素
+      //     React.DOM.small(null, 'world')
+      //   ),//第一引数に要素
+      //   document.getElementById('example')//第二引数にコンテナとなる要素
+      // );
 
-      var CommentList = React.createClass({
-        render: function(){
-          var comments = this.props.comments.map(function(comment, index){
-            return <li key={ index }>{ comment }</li>
-          });
-          return (
-            <ul className="comment-list">{ comments }</ul>
-          );
-        }
-      });
 
-// Clas CommentApp {
-//   comments: [],
-//   inputValue: ''
-//   constructor(){
+//#2
+
+      // var myComponent = React.createClass({
+      //   render : function(){//reactコンポーネントを返している
+      //     return React.DOM.p(null, 'my component');
+      //   }
+      // });
+      // React.render(//作ったコンポーネントをレンダリングする。コンポーネントインスタンスを生成する必要がある
+      //   React.createElement(myComponent),
+      //   document.getElementById('example');
+      // )
+      //上記は下記と同義
+      //React.DOM.*はReact.createElement()をラップしたもの。
+      // var myComponent = React.createClass({
+      //   render: function(){
+      //   }
+      // });
+      //
+      // 下記と同義
+      // React.render(
+      //   React.DOM.p(null, 'my component'),
+      //   document.getElementById('example')
+      // )
+      //
+      // コンポーネントを作成していないためTopLevelComponent
+
+//      var Instance  = React.createClass({
+//        render: function(){
+//          var text2 = ['hello','world'];
+//         var sakusen = "tefafaxt";
+//         var classses = 'some-class-name';
+//         var surveyquestionid = this.props.id;
+//         return (
+//             <h2 id={surveyquestionid} classname={classses}>juuuthis.props.children</h2>
+//             )
+//       }
+//     })
+
+//      react.render(
+//          <instance>質問</instance>,
+//        document.getelementbyid('example')
+//      )
+
+      // var Divider = React.createClass({
+      //   render: function(){
+      //     return (
+      //       <div className="greeting fafa">
+      //         <h2>っっｋ</h2>
+      //       </div>
+      //     );
+      //   }
+      // });
+      //
+      // ReactDOM.render(
+      //   <Divider></Divider>,
+      //   document.getElementById('example')
+      // );
+
+
+
+
+//React.render({
 //
-//   }
-//   handleSubmit: funciton(){
-//     var comment = this.inputValue;
-//     this.render(comment, inputValue);
-//   }
-// }
+//  getIsComplete : function(){
+//  return this.state.isComplete ? 'is-complete' : '';
+//  },
+//  render: function(){
+//  return (
+//    <div className={getIsComplete()}></div>
+//    )
+//  }
+//}
+    
+    
+//論理演算子「&&」を使った例
+//render: function(){
+//return <div className={this.state.isComplate && 'is-complete'}>
+//}
+    React.createClass({
+    
+
+render: function(){
+var htmlString = {
+__html: "<span>HTML文字列</span>"
+};
+return <div dangerouslySetInnerHTML={htmlString}></div>
+}
+});
 
 
-      var CommentApp = React.createClass({
-        getInitialState: function(){
-            return {
-              comments: [],
-              inputValue: ''
-            }
-        },
-        handleSubmit : function(e){
-          e.preventDefault();
-          var comment = this.state.inputValue;
-          this.setState({
-            comments : this.state.comments.concat(comment),
-            inputValue: ''
-          })
-        },
-        handleChange : function(e){
-          this.setState({
-            inputValue: e.target.value//input.valueの値の取り方
-          })
-        },
-        render: function(){
-          return (
-            <div>
-              <form className="comment-form" onSubmit={ this.handleSubmit }>
-                <input type="text" value={ this.state.inputValue }
-                    onChange={ this.handleChange }
-                />
-                <input type="submit" value="追加" />
-              </form>
-              <CommentList comments={ this.state.comments } />
-            </div>
-          );
-        }
-      });
-      ReactDOM.render(<CommentApp />,
-      document.getElementById('container')
-      )
 
 
-  </script>
+
+    </script>
+    
+
   </body>
 </html>

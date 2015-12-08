@@ -10,9 +10,26 @@
     </style>
   </head>
   <body>
+    <p>表示することができる</p>
+    <p>値を受け渡すことができる</p>
   <div id="container"></div>
+
   <script type="text/babel">
-      
+    var Input = React.createClass({
+
+      render: function(){
+        var sampletext = "ccc";
+        return (
+          <div>
+            <span>fafa {sampletext} </span>
+          </div>
+        )
+      }
+    });
+    ReactDOM.render(
+      <Input />,
+      document.getElementById('container')
+    )
   </script>
   </body>
-</html>
+</html
