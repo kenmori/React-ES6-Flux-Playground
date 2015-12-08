@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>inputradio!</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <style media="screen">
+      .comment-form {
+        background: #f0f0f0;
+        padding: 32px;
+      }
+      .comment-form input[type='text'] {
+          width: 80%;
+          padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+  <div id="container"></div>
+  <script type="text/babel">
+    var AnswerRadioInput = React.createClass({
+      propTypes: {//動的に変わるpropsを定義
+        id: React.PropTypes.string,
+        name: React.PropTypes.string.isRequired,
+        label: React.PropTypes.string.isRequired,
+        value: React.PropTypes.string.isRequired,
+        checked: React.PropTypes.bool
+      },
+      getDefaultProps: function(){//インスタンス毎に呼ばれないのでユニークに定義できない
+        return {
+          id: null,
+          checked: false
+        };
+      },
+      getInitialState: function(){//時間と共に変化するものやインスタンス毎にユニークな値をstateで保持する
+        return {
+          checked: !!this.props.checked,
+          id: this.props.id ? this.props.id : uniqueId('radio-')
+        };
+      },
+      render: function(){
+        return (
+          <div className="radio">
+            <label htmlFor={ this.state.id }>
+              <input type="radio"
+              name={ this.props.name }
+              id={ this.state.id }
+              value={ this.props.value }
+              checked={ this.state.checked } />
+              { this.props.label }
+            </label>
+          </div>
+        );
+      }
+    });
+    var AnswerMultipleChoiceQuestion = React.createClass({
+      propTypes: {
+        value : React.PropTypes.string,
+        choices: React.PropTypes.array.isRequired,
+        onCompleted: React.PropTypes.func.isRequired
+      },
+      getInitialState: function(){
+        return {
+          id: uniqueId('multiple-choice-'),
+          value: this.props.value
+        };
+      },
+      renderChoices: function(){
+        return this.props.choices.map(function (choice, i){
+          return <AnswerRadioInput
+            key={ "choice-" + i }
+            name={ this.state.id }
+            label={ choice }
+            value={ choice }
+            checked={ this.state.value === choice }
+          />
+        }.bind(this))
+      },
+      render: function(){
+        return (
+            <div className="form-group">
+              <label className="survey-item-label" htmlFor={ this.state.id }>
+                { this.props.label }
+              </label>
+              <div className="survey-item-content">
+                { this.renderChoices() }
+              </div>
+            </div>
+        )
+      }
+    });
+    ReactDOM.render(
+      <AnswerMultipleChoiceQuestion choices={ arrayofChoices } />,
+      document.getElementById('container')
+    )
+  </script>
+  </body>
+</html>
