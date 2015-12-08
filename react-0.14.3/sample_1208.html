@@ -33,13 +33,13 @@
         return (
           <div>
             { this.props.children }
-            <Input />
           </div>
+           //これを削除すると空divのみ
         )
       }
     })
     ReactDOM.render(
-      <WrapInput><div>子のー度<span>この子ノード</span></div></WrapInput>,
+      <WrapInput><Input /></WrapInput>,
       document.getElementById('container')
     )
   </script>
