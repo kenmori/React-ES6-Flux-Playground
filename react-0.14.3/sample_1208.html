@@ -13,6 +13,7 @@
     <p>表示することができる</p>
     <p>値を受け渡すことができる</p>
     <p>親コンポーネントの中に子コンポーネントを含めることができる</p>
+    <p>子ノードを参照することができる</p>
   <div id="container"></div>
 
   <script type="text/babel">
@@ -31,13 +32,14 @@
       render: function(){
         return (
           <div>
+            { this.props.children }
             <Input />
           </div>
         )
       }
     })
     ReactDOM.render(
-      <WrapInput />,
+      <WrapInput><div>子のー度<span>この子ノード</span></div></WrapInput>,
       document.getElementById('container')
     )
   </script>
