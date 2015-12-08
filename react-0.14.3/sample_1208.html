@@ -7,6 +7,7 @@
     <script src="build/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <style media="screen">
+      p {font-size:9px;margin:0;}
     </style>
   </head>
   <body>
@@ -14,6 +15,8 @@
     <p>値を受け渡すことができる</p>
     <p>親コンポーネントの中に子コンポーネントを含めることができる</p>
     <p>子ノードを参照することができる</p>
+    <p>動的な値を参照することができる</p>
+
   <div id="container"></div>
 
   <script type="text/babel">
@@ -29,9 +32,14 @@
       }
     });
     var WrapInput = React.createClass({
+      getInitialState: function(){
+        return {
+          isComplete : true
+        }
+      },
       render: function(){
         return (
-          <div>
+          <div className={ this.state.isComplete ? 'is-complete' : '' }>
             { this.props.children }
           </div>
            //これを削除すると空divのみ
