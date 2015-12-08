@@ -6,14 +6,84 @@
     <script src="build/react.js"></script>
     <script src="build/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <style media="screen">
+      .comment-form {
+        background: #f0f0f0;
+        padding: 32px;
+      }
+      .comment-form input[type='text'] {
+          width: 80%;
+          padding: 8px;
+      }
+    </style>
   </head>
   <body>
-    <div id="example"></div>
-    <script type="text/babel">
-      ReactDOM.render(
-        <h1>えええええええええ, world!</h1>,
-        document.getElementById('example')
-      );
-    </script>
+  <div id="container"></div>
+  <script type="text/babel">
+
+      var CommentList = React.createClass({
+        render: function(){
+          var comments = this.props.comments.map(function(comment, index){
+            return <li key={ index }>{ comment }</li>
+          });
+          return (
+            <ul className="comment-list">{ comments }</ul>
+          );
+        }
+      });
+
+// Clas CommentApp {
+//   comments: [],
+//   inputValue: ''
+//   constructor(){
+//
+//   }
+//   handleSubmit: funciton(){
+//     var comment = this.inputValue;
+//     this.render(comment, inputValue);
+//   }
+// }
+
+
+      var CommentApp = React.createClass({
+        getInitialState: function(){
+            return {
+              comments: [],
+              inputValue: ''
+            }
+        },
+        handleSubmit : function(e){
+          e.preventDefault();
+          var comment = this.state.inputValue;
+          this.setState({
+            comments : this.state.comments.concat(comment),
+            inputValue: ''
+          })
+        },
+        handleChange : function(e){
+          this.setState({
+            inputValue: e.target.value//input.valueの値の取り方
+          })
+        },
+        render: function(){
+          return (
+            <div>
+              <form className="comment-form" onSubmit={ this.handleSubmit }>
+                <input type="text" value={ this.state.inputValue }
+                    onChange={ this.handleChange }
+                />
+                <input type="submit" value="追加" />
+              </form>
+              <CommentList comments={ this.state.comments } />
+            </div>
+          );
+        }
+      });
+      React.render(<CommentApp />,
+      document.getElementById('container')
+      )
+
+
+  </script>
   </body>
 </html>
