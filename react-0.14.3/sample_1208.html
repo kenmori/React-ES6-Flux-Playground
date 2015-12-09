@@ -17,17 +17,27 @@
     <p>子ノードを参照することができる</p>
     <p>動的な値を参照することができる(if)</p>
     <p>動的な値を参照することができる(func)</p>
+    <p>input入力した値をclickイベントを通して描画することができる(ControlledComponentとして)</p>
 
   <div id="container"></div>
 
   <script type="text/babel">
     var Input = React.createClass({
+      getInitialState : function(){
+        return {
+          textvalue: 'state!!'
+        }
+      },
+      getChange: function(event){
+        this.setState({ textvalue : event.target.textvalue })
+      },
       render: function(){
         var sampletext = "ccc";
         return (
           <div>
           {sampletext}
             <span>fafa</span>
+            <input type="text" value={this.state.textvalue} onChange={ this.getChange }></input>
           </div>
         )
       }
