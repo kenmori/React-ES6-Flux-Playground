@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style media="screen">
+    </style>
+  </head>
+  <body>
+  <div id="myApp"></div>
+  <!-- http://qiita.com/zuzu/items/73ec0321fac5c76e13c5 -->
+  <script type="text/babel">
+    var TodoApp = React.createClass({
+      getInitialState: function(){
+        return {
+          todos : [
+            {
+              item: "sample",
+              status: 0
+            }
+          ]
+        }
+      },
+      onAdd : function(newTodo){
+        this.setState({
+          todos : this.state.todos.concat({item: newTodo, status: 0})//状態を更新
+        });
+      },
+      onDelete: function(i){
+        var targetTodo = this.state.todos[i];
+        targetTodo.status = 1;
+        this.setState({
+          todos: this.state.todos
+        });
+      },
+      render : function(){
+        return (
+          <div className="todoApp">
+            <TodoCreator onAdd={ this.onAdd } />
+            <TodoList todos={ this.state.todos } onDelete={ this.onDelete }/>
+          </div>
+        );
+        //子コンポーネントに渡す
+      }
+    });
+    var TodoCreator = React.createClass({
+      getInitialState: function(){
+        return {
+          value: ""
+        }
+      },
+      _onAdd: function(){
+        var newTodo = this.refs.inputText.value;
+        this.props.onAdd(newTodo);//親に渡す
+        this.setState({value : ""});//親に渡したらnullにする
+      },
+      _onchange: function(e){
+        this.setState({
+          value: e.target.value
+        })
+      },
+      render: function(){
+        return (
+          <div className="TodoCreator">
+            <input type="text" value={ this.state.value } ref="inputText" onChange={ this._onchange } placeholder="Input your new todo" />
+            <button onClick={ this._onAdd }>add!</button>
+          </div>
+        )
+      }
+    });
+    var TodoList = React.createClass({
+      _onDelete: function(i){
+        this.props.onDelete(i);
+      },
+      render: function(){
+        return (
+          <ul>
+            {
+              this.props.todos.map(function(todo, i){//propsを通じて親の中身を参照できる
+                if(todo.status == 0){
+                  return (
+                  <li key={i}>
+                    <input type="checkbox" onClick={ this._onDelete.bind(this, i) } />
+                    { todo.item }
+                  </li>
+                  )
+                } else {
+                  return <li><s>{ todo.item }</s></li>
+                }
+              }, this)
+            }
+          </ul>
+        )
+      }
+    });
+    ReactDOM.render(
+      <TodoApp />,document.getElementById('myApp')
+    )
+  </script>
+  </body>
+</html
