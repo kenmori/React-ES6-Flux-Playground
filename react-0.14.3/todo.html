@@ -29,7 +29,7 @@
           todos : this.state.todos.concat({item: newTodo, status: 0})//状態を更新
         });
       },
-      onDelete: function(i){
+      onDelete: function(i){//子から渡ってきたindex
         var targetTodo = this.state.todos[i];
         targetTodo.status = 1;
         this.setState({
@@ -39,8 +39,8 @@
       render : function(){
         return (
           <div className="todoApp">
-            <TodoCreator onAdd={ this.onAdd } />
-            <TodoList todos={ this.state.todos } onDelete={ this.onDelete }/>
+            <TodoCreator onAdd={ this.onAdd } />//子にメソッドを渡す(onAddは子でthis.props.onAdd,子から呼ばれたら親のonAddで値を返す)
+            <TodoList todos={ this.state.todos } onDelete={ this.onDelete }/>//状態の変化を子に伝える為this.state.todos
           </div>
         );
         //子コンポーネントに渡す
@@ -54,7 +54,7 @@
       },
       _onAdd: function(){
         var newTodo = this.refs.inputText.value;
-        this.props.onAdd(newTodo);//親に渡す
+        this.props.onAdd(newTodo);//親のプロパティメソッドをcall
         this.setState({value : ""});//親に渡したらnullにする
       },
       _onchange: function(e){
@@ -79,7 +79,7 @@
         return (
           <ul>
             {
-              this.props.todos.map(function(todo, i){//propsを通じて親の中身を参照できる
+              this.props.todos.map(function(todo, i){//propsを通じて親の状態(state)を参照できる
                 if(todo.status == 0){
                   return (
                   <li key={i}>
