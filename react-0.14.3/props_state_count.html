@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>inputradio!</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+  </head>
+  <body>
+  <div id="container"></div>
+  <div id="countByProps">
+    <h4>Count by Props</h4>
+    <div id="countDisplay">
+    </div>
+      <button onclick="Counter.countUp()">countup</button>
+  </div>
+  <script type="text/babel">
+    // var CountParent = React.createClass({
+    //   getInitialState : function(){
+    //     return {
+    //       count : ""
+    //     }
+    //   },
+    //   addCount : function(){
+    //     setState({
+    //       count : this.state.count + 1
+    //     })
+    //   },
+    //   render : function(){
+    //     return (
+    //       <div>
+    //         <CountChild addCount={ this.addCount } />
+    //       </div>
+    //     )
+    //   }
+    // });
+    // var CountChild = React.createClass({
+    //     _addCount: function(e){
+    //       console.log(e)
+    //       this.addCount();
+    //     },
+    //     render: function(){
+    //       return (
+    //         <button onClick={ this._addCount }>addCount</button>
+    //       )
+    //     }
+    // });
+    // ReactDOM.render(
+    //   <CountParent />,
+    //   document.getElementById('container')
+    // )
+    //
+    var CountDisplay = React.createClass({
+      render : function(){
+        return <div> your count is { this.props.count }</div>
+      }
+    });
+    var CountByProps = (function(){
+      function CountByProps(){
+        this.count = 0;
+        var displayEl = document.getElementById("countDisplay");
+        this.display = ReactDOM.render(
+          <CountDisplay count={ this.count } />, displayEl
+        )
+      };
+      CountByProps.prototype.countUp = function(){
+        this.count += 1;
+        this.display.setProps({
+          count : this.count
+        });
+        //pass the count to element
+      };
+      return CountByProps;
+    })();
+    var Counter = new CountByProps();
+
+
+    var CountByState = React.createClass({
+      getInitialState: function(){
+        return {
+          count : 0
+        };
+      },
+      handleClick : function(){
+        var countNow = this.state.count;
+        this.setState({ count: countNow + 1 })
+      },
+      render : function(){
+        return (
+          <div>
+            <h4>Count by count</h4>
+            <span>{ this.state.count }</span><br />
+            <button onClick={ this.handleClick }>Count</button>
+          </div>
+        )
+      }
+    });
+    ReactDOM.render(
+      <CountByState />,document.getElementById('container')
+    )
+  </script>
+  </body>
+</html>
