@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style media="screen">
+    </style>
+  </head>
+  <body>
+  <div id="container"></div>
+  <script type="text/babel">
+  //JSON
+    var data = [
+      {id : 1, author: "morita"},
+      {id : 2, author: "kenji"},
+      {id : 3, author: "fafasan"}
+    ];
+    var Member = React.createClass({
+      render: function(){
+        return (
+          <div className="member">
+            <h2 className="memberAuthor">
+              { this.props.author }
+            </h2>
+          </div>
+        )
+      }
+    });
+    var MemberList = React.createClass({
+      render: function(){
+        var memberNodes = this.props.data.map(function(member){
+          return (
+            <Member author={ member.author }></Member>
+          );
+        });
+        return (
+          <div className="memberList">
+            { memberNodes }
+          </div>
+        )
+      }
+    });
+    var MemberBox = React.createClass({
+      getInitialState : function(){
+        return {
+          count: this.props.data
+        }
+      },
+      render: function(){
+        return (
+          <div className="memberBox">
+            <h1>Member</h1>
+            <p>{ this.state.count.length } person</p>
+            <MemberList data={ this.props.data }/>
+          </div>
+        )
+      }
+    });
+    ReactDOM.render(
+      <MemberBox data={ data } />, document.querySelector('#container')
+    );
+  //外部API
+  //
+  //
+  </script>
+  </body>
+</html
