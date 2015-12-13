@@ -12,33 +12,27 @@
   <body>
   <div id="container"></div>
   <script type="text/babel">
-  //JSON
     var data = [
       {id : 1, author: "morita"},
-      {id : 2, author: "kenji"},
-      {id : 3, author: "fafasan"}
+      {id : 2, author: "kenji"}
     ];
     var Member = React.createClass({
       render: function(){
+          console.log(this);
         return (
-          <div className="member">
-            <h2 className="memberAuthor">
-              { this.props.author }
-            </h2>
-          </div>
+          <li>{this.props.data.author }</li>
         )
       }
     });
     var MemberList = React.createClass({
       render: function(){
-        var memberNodes = this.props.data.map(function(member){
-          return (
-            <Member author={ member.author }></Member>
-          );
-        });
         return (
           <div className="memberList">
-            { memberNodes }
+          {
+            this.props.data.map(function(member){
+            return  <Member key={ member.id } data={ member } />
+            })
+          }
           </div>
         )
       }
@@ -62,9 +56,6 @@
     ReactDOM.render(
       <MemberBox data={ data } />, document.querySelector('#container')
     );
-  //外部API
-  //
-  //
   </script>
   </body>
 </html
