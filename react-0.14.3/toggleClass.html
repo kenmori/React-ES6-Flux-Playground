@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>toggleClass</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/classnames/2.2.0/index.min.js"></script> -->
+    <script src="build/classnames.js"></script>
+    <style media="screen">
+      .is-warning {
+        color: red;
+      }
+      .is-important {
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+  <div id="container"></div>
+  <!-- by oneself -->
+  <!-- <script type="text/babel">
+    var Toggles = React.createClass({
+      getInitialState: function(){
+        return {
+          className : "warning"
+        }
+      },
+      warning: function(){
+        this.setState({ className: !this.state.className });
+      },
+      strong: function(){
+        this.setState({ className: !this.state.className });
+      },
+      render: function(){
+        return (<div><button onClick={ this.warning }>warning</button><button onClick={ this.strong }>strong</button><div>(-_-)</div></div>)
+      }
+    });
+    ReactDOM.render(<Toggles />, document.getElementById('container'))
+  </script> -->
+  <!-- This is the correct answer -->
+  <script type="text/babel">
+    var Toggles = React.createClass({
+      getInitialState: function(){
+        return {
+          isWarning : false,
+          isImportant : false
+        };
+      },
+      toggleWarning: function(){
+        this.setState({ isWarning : !this.state.isWarning });
+      },
+      toggleImportant: function(){
+        this.setState({ isImportant: !this.state.isImportant });
+      },
+      render: function(){
+        var style = classNames({
+          'is-warning' : this.state.isWarning,
+          'is-important' : this.state.isImportant,
+        });
+        return (
+          <div>
+            <button onClick={ this.toggleWarning }>warning</button>
+            <button onClick={ this.toggleImportant }>strong</button>
+            <div className={ style }>(-_-)</div>
+          </div>)
+      }
+    });
+    ReactDOM.render(<Toggles />, document.getElementById('container'))
+  </script>
+  </body>
+</html>

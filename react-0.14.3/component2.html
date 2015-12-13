@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React propの移動・ショートカット</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style media="screen">
+    </style>
+  </head>
+  <body>
+  <div id="container"></div>
+  <script type="text/babel">
+  // https://facebook.github.io/react/docs/reusable-components-ja-JP.html#es6-classes
+  var CheckLink = React.createClass({
+    //以下はCheckLinkに渡されたどんなpropsもとることができ、<a>タグにコピーすることもできる
+    render: function(){
+      return (
+        <a { ...this.props }>{ '//' }</a>
+      )
+    }
+  });
+
+  //JSXのスプレッドシンタックスでオブジェクトを一組そのまま指定する
+  var ListenSurveys = React.createClass({
+    render: function () {
+      var props = {
+        one: 'foo',
+        two: 'bar'
+      };
+      return <SurveyTable {...props} />;
+    }
+  });
+
+
+  //単一の子要素
+  var MyComponent = React.createClass({
+    propType : {
+      children : React.PropTypes.element.isRequired
+    },
+    render : function(){
+      return (
+        <div>
+          { this.props.children }
+          //１つの要素でなければいけない
+        </div>
+      )
+    }
+  });
+
+  //ES6
+  //
+  export class Counter extends React.Component{
+    constructor(props){
+      super(props);
+      //コンストラクタ内にgetInitialStateの代わりにthis.stateにセットする
+      this.state = { count: props.initialCount };
+    }
+    tick() {
+      this.setState({ count : this.state.count + 1 });
+    }
+    render (){
+      return (
+        <div onClick={ this.tick.bind(this) }>
+        //オートバインディングしないので.bind(this)とする
+          Clicks: { this.state.count }
+        </div>
+      );
+    }
+  };
+  //propTypesとdefaultPropはコンストラクタにプロパティとして定義されます。
+  Counter.proTypes = { initialCount : React.PropTypes.number };
+  Counter.defaultProps = { initialCount: 0 };
+  </script>
+  </body>
+</html
