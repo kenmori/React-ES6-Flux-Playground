@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style media="screen">
+    </style>
+  </head>
+  <body>
+  <div id="container"></div>
+  <script type="text/babel">
+  //ES6
+  // class HellowWorld extends React.Component {
+  //   render (){
+  //     return <div>Hello World!</div>
+  //   }
+  // }
+// http://qiita.com/koba04/items/55d28f0aba4d1f53e735
+  var Logger = {
+    logging(str){
+      console.log(str);
+    },
+    componentDidMount(){
+      this.logging('Component did mount');
+    }
+  };
+  //This mixin is called after method of render
+  var Hello = React.createClass({
+    mixins:[Logger],
+    render: function(){
+      this.logging("render");
+      return <div>Hello</div>
+    }
+  })
+
+  //Multiple Mixin
+  var MixinA = {
+    componentWillMount (){
+      console.log("mixinA");
+    }
+  };
+  var MixinB = {
+    componentWillMount (){
+      console.log("mixinB");
+    }
+  };
+  var MultipleMixin = React.createClass({
+    mixins:[MixinA, MixinB],
+    componentWillMount(){
+      console.log("componentC")
+    },
+    render: function(){
+      return <div>Hello</div>
+    }
+  });
+  //A,B,component
+  //
+  //
+  //When you use Mixin as getInitialState
+  var MixinState = {
+    getInitialState(){
+      return {
+        mixinValue: "mixin state"
+      };
+    }
+  };
+  var MixinGetProps = React.createClass({
+    mixins: [MixinState],
+    getInitialState(){
+      return {
+        componentValue : "component value"
+      };
+    },
+    render : function(){
+      console.log(this.state);
+      return <div>hello</div>
+    }
+  });
+  //merged : Object {mixinValue: "mixin state", componentValue: "component value"}
+
+
+
+  ReactDOM.render(<MixinGetProps /> , document.getElementById('container'));
+  ReactDOM.render(<Hello />, document.getElementById('container'));
+  ReactDOM.render(<MultipleMixin /> , document.getElementById('container'));
+  </script>
+  </body>
+</html>
