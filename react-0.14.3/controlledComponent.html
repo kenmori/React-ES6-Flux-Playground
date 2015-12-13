@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    <style media="screen">
+    </style>
+  </head>
+  <body>
+  <div id="controlledForm"></div>
+  <div id="uncontrolledForm"></div>
+  <script type="text/babel">
+
+      //Uncontrolled components
+      //
+      // var Form = React.createClass({
+      //   submithandler : function(e){
+      //     e.preventDefault();//use
+      //     // var innerHtml = this.refs.textinput.value; bad
+      //     var innerHtml = ReactDOM.findDOMNode(this.refs.textinput).value;
+      //     alert(innerHtml);
+      //   },
+      //   render: function(){
+      //     return (
+      //       <form onSubmit={ this.submithandler }>
+      //         <input ref="textinput" type="text" defaultValue="Hello" />
+      //         <button type="submit">送信</button>
+      //       </form>
+      //     )
+      //   }
+      // });
+      // ReactDOM.render(<Form />,document.getElementById('uncontrolledForm'))
+
+      //controlled form
+      var Form = React.createClass({
+        getInitialState: function(){
+          return {
+            textinput : "hello"
+          }
+        },
+        _onChange: function(e){
+          this.setState({
+            textinput : e.target.value
+            // textinput : e.target.value.toUpperCase()
+          });
+        },
+        submithandler : function(e){
+          e.preventDefault();//use
+          alert(this.state.textinput);
+        },
+        render: function(){
+          return (
+            <form onSubmit={ this.submithandler }>
+              <input type="text" onChange={ this._onChange } value={ this.state.textinput } />
+              <button type="submit">送信</button>
+            </form>
+          )
+        }
+      });
+      // ReactDOM.render(<Form />,document.getElementById('uncontrolledForm'))
+      ReactDOM.render(<Form />,document.getElementById('controlledForm'))
+
+  </script>
+  </body>
+</html>
