@@ -66,10 +66,14 @@
   // ここでは便宜的にtest()メソッドとしました。
   //View上でtest()メソッドが実行されると、
   //testDispatcherインスタンスのdispatch()メソッドが実行されるようにするのがポイントです。
+  var CHANGE_EVENT = "change";
+  var testConstants = {
+      TEST : "test"
+  };
   var TestAction = {
     test: function(testValue){
       testDispatcher.dispatch({
-        actionType: "test",
+        actionType: testConstants.TEST,
         value: testValue
       })
     }
@@ -204,14 +208,14 @@ getAll: function(){
 //イベントを発生させるメソッドを定義
 emitChange: function(){
 //イベント名を"change"としてイベントを発生
-  this.emit("change");
+  this.emit(CHANGE_EVENT);
 },
 addChangeListener: function(callback){
   //"change"イベントの発生を取得したら、引数にセットされたコールパックを実行
   this.on("change", callback);
 },
 dispatcherIndex: testDispatcher.regster(function(palyload){
-    if(payload.actionType === "test"){
+    if(payload.actionType === testConstants.TEST){
       _test.value = payload.value;
       //emitChange()メソッドを実行(イベント発生)
       TestStore.emitChange();
@@ -257,6 +261,15 @@ var TestApp = React.createClass({
 //componentDidMount()メソッドは、
 //初期描画が発生した直後に一度実行されるメソッドです。
 //イベントリスナーなどを使ったイベントの登録などに使用されます。
+
+
+
+//Fluxで実装したサンプルのソースコード
+//これでFluxによる上記サンプルの実装が可能となります。
+//最後に、これまで説明してきたコードをひとつにまとめておきます。
+//Fluxは、アクションタイプ名やイベント名を定数で書くのが通例のようなので、上記では複雑にならないように敢えて使いませんでしたが、以下では定数を使うようにしています。
+
+
 </script>
 
 </body>
