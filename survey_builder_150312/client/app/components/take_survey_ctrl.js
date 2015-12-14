@@ -25,6 +25,8 @@ var TakeSurveyCtrl = React.createClass({
   render:function () {
     var props = merge({}, this.state.survey, {
       onSave: this.handleSurveySave
+      //このpropsは上位のコンポーネントTakeSurveyCtrlにより定義されている
+      //TakeSurveyCtrlはController-Viewの役割をしている
     });
     return TakeSurvey(props);
   }

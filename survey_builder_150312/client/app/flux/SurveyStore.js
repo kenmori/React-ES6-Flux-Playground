@@ -34,9 +34,10 @@ SurveyStore.prototype.deleteSurvey = function(id) {
   this.emitChange();
 }
 
+//StoreはActionを受け取り、結果を保存し終えるとchangeイベントを発行する
 SurveyStore.prototype.recordSurvey = function(results) {
   console.debug("TODO: record the survey results", results);
-
+  //サーベイの結を保存する
   this.emitChange();
 }
 
