@@ -1,11 +1,11 @@
 var Dispatcher = require("./Dispatcher");
 var SurveyConstants = require("./SurveyConstants");
 
-var SurveyActions = {
+var SurveyActions = {//actionを発行するための関数の保持
   save: function(survey) {
     Dispatcher.dispatch({
       actionType: SurveyConstants.SAVE_SURVEY,
-      survey: survey
+      survey: survey //view of title, introduction, question
     });
   },
 

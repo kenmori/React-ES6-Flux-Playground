@@ -4,6 +4,7 @@ var Dispatcher = function() {
   this.pendingPayload = null;
 }
 
+//callbackはapp.jsに登録されたfunction
 Dispatcher.prototype.register = function(callback) {
   this.handlers.push({
     isPending: false,
@@ -11,6 +12,25 @@ Dispatcher.prototype.register = function(callback) {
     callback: callback
   });
 };
+//function(payload){
+// switch(payload.actionType) {
+//   case SurveyConstants.SAVE_SURVEY:
+//     SurveyStore.saveSurvey(payload.survey);
+//     break;
+//
+//   case SurveyConstants.DELETE_SURVEY:
+//     SurveyStore.deleteSurvey(payload.id)
+//     break;
+//
+//   case SurveyConstants.RECORD_SURVEY:
+//     SurveyStore.recordSurvey(payload.results);
+//     break;
+//  }
+// }
+//
+//
+//         handler.callback(payload);で実行される
+
 
 Dispatcher.prototype.dispatch = function(payload) {
   if (this.isDispatching) {

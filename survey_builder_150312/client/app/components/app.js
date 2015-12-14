@@ -8,6 +8,8 @@ var SurveyConstants = require("../flux/SurveyConstants");
 
 // Wire up the SurveyStore with the action dispatcher
 Dispatcher.register(function(payload) {
+  //Storeのコールバックを登録している
+  //Action対応を判定して適当なメソッドを呼び出している
   switch(payload.actionType) {
     case SurveyConstants.SAVE_SURVEY:
       SurveyStore.saveSurvey(payload.survey);
@@ -23,9 +25,15 @@ Dispatcher.register(function(payload) {
   }
 });
 
+//更新されたデータはReactコンポーネントツリーの上から下に渡され再描画される
+//Countroller-View
+//
+//ここでやっていること
+//componentがViewに追加された際にchangeイベントリスナーを登録する
 var App = React.createClass({
   handleChange: function() {
     SurveyStore.listSurveys(function(surveys) {
+      //取得したデータでコンポーネントを更新する
       console.debug("TODO: update app state based on surveys returned by SurveyStore.listSurveys (once it actually returns some)");
     });
   },
@@ -35,6 +43,7 @@ var App = React.createClass({
   },
 
   componentWillUnmount: function() {
+    //コンポネントがページから削除される際にchangeイベントリスナーを解除する
     SurveyStore.removeChangeListener(this.handleChange);
   },
 
