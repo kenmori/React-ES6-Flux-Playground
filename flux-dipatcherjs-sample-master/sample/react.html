@@ -9,6 +9,56 @@
 <body>
   <div id="content"></div>
   <script src="../dist/react-build.js"></script>
+  <script>
+  //Reactだけで書いたときの実装。ここからFluxにするには？？
+  //Flux はFlux実装する箇所
+  var TestApp = React.createClass({
+    getInitialState: function(){
+        return { value : null };//Flux
+    },
+    setInputval: function(testValue){//Flux
+      this.setState({ value : testValue })//Flux
+    },//Flux
+    render : function(){
+      return (
+        <div className="testApp">
+          <TestForm onClickBtn={ this.setInputVal } />//Flux
+          <TestDisplay data={ this.state.value } />
+        </div>
+      );
+    }
+  });
+  var TestForm = React.createClass({
+    send: function(e){
+      e.preventDefault();
+      var testValue = React.findDOMNode(this.refs.test_value).value.trim();
+      this.props.onClickBtn(testValue);//Flux
+      React.findDOMNode(this.refs.test_value).value = "";
+      return;
+    },
+    render: function(){
+      return (
+        <form>
+          <input type="text" ref="test_value" />
+          <button onClick={ this.send }>送信</button>
+        </form>
+      );
+    }
+  });
+  var TestDisplay = React.createClass({
+    var message = this.props.data;
+    render: function(){
+      return (
+        <div>{ message }</div>
+      );
+    }
+  });
+  ReactDOM.render(
+    <TestApp />,
+    document.getElementById('content')
+  )
+  </script>
+
 </body>
 
 </html>
