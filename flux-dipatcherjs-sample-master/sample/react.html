@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>test</title>
 </head>
-
+<!-- http://mae.chab.in/archives/2747 -->
 <body>
   <div id="content"></div>
   <script src="../dist/react-build.js"></script>
@@ -16,13 +16,10 @@
     getInitialState: function(){
         return { value : null };//Flux
     },
-    setInputval: function(testValue){//Flux
-      this.setState({ value : testValue })//Flux
-    },//Flux
     render : function(){
       return (
         <div className="testApp">
-          <TestForm onClickBtn={ this.setInputVal } />//Flux
+          <TestForm/>
           <TestDisplay data={ this.state.value } />
         </div>
       );
@@ -32,7 +29,7 @@
     send: function(e){
       e.preventDefault();
       var testValue = React.findDOMNode(this.refs.test_value).value.trim();
-      this.props.onClickBtn(testValue);//Flux
+      TestAction.test(testValue);
       React.findDOMNode(this.refs.test_value).value = "";
       return;
     },
@@ -57,6 +54,47 @@
     <TestApp />,
     document.getElementById('content')
   )
+
+
+  // 次にActionの実装の説明に移ります。
+  // ActionはViewからのアクションに応じて（状況によりサーバと通信を行い）適切なデータをSoterに伝える場所です。
+  // TestActionオブジェクトを作り、
+  // Viewから実行できるメソッドを定義します。
+  // ここでは便宜的にtest()メソッドとしました。
+  //View上でtest()メソッドが実行されると、
+  //testDispatcherインスタンスのdispatch()メソッドが実行されるようにするのがポイントです。
+  var TestAction = {
+    test: function(testValue){
+      testDispatcher.dispatch({
+        actionType: "test",
+        value: testValue
+      })
+    }
+  }
+  //Storeで実装するtestDispatcherインスタンスのregister()メソッドは、
+  //dispatch()メソッドを実行すると、
+  //その引数にセットした値（オブジェクト/ペイロード）を受け取ってくれるようになっています。
+
+//Store内には処理の内容に合わせて複数のregister()メソッドを実装する場合もあります。
+//dispatch()メソッドが実行されると、
+//実装したすべてのregister()メソッドがdispatch()メソッドの引数にセットした値を受け取るようになっています。
+//従って、それぞれのregister()メソッド内で実行する処理の出し分けができるように、
+//dispatch()メソッドの引数にセットするオブジェクトには、
+//識別用に"actionType"というキーを設けておくのがポイントとなります。
+
+
+//View（React）の修正
+//Actionを実装したことで、
+//React内で行っていたクリックイベントによる処理が必要なくなります。
+//Viewを修正していきます。
+//
+//35行目
+//
+//ボタンがクリックされた時の処理をActionで行うようにしたので、
+//rootのTestAppコンポーネント内で定義していた処理は削除します。
+//
+//18行目とか
+//
   </script>
 
 </body>
