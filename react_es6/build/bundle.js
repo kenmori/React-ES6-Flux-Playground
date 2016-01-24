@@ -231,8 +231,7 @@ var _componentsCommentBox = require('./components/CommentBox');
 
 var _componentsCommentBox2 = _interopRequireDefault(_componentsCommentBox);
 
-var data = [{ author: 'kenji', text: 'This is one comment' }, { author: 'morita', text: 'This is *author* comment' }];
-_react2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], { data: data }), document.getElementById('container'));
+_react2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], { url: 'comment.json' }), document.getElementById('container'));
 
 },{"./components/CommentBox":2,"react":162}],6:[function(require,module,exports){
 (function (process){
