@@ -1,15 +1,15 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
+"use strict";
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -21,24 +21,76 @@ var CommentBox = (function (_React$Component) {
   function CommentBox(props) {
     _classCallCheck(this, CommentBox);
 
-    _get(Object.getPrototypeOf(CommentBox.prototype), 'constructor', this).call(this, props);
+    _get(Object.getPrototypeOf(CommentBox.prototype), "constructor", this).call(this, props);
   }
 
   _createClass(CommentBox, [{
-    key: 'render',
+    key: "render",
     value: function render() {
-      return _react2['default'].createElement(
-        'div',
-        { className: 'commentBox' },
-        'Hello, world I am CommentBox'
+      return _react2["default"].createElement(
+        "div",
+        { className: "commentBox" },
+        _react2["default"].createElement(
+          "h2",
+          null,
+          "Comments"
+        ),
+        _react2["default"].createElement(CommentList, null),
+        _react2["default"].createElement(CommentFrom, null)
       );
     }
   }]);
 
   return CommentBox;
-})(_react2['default'].Component);
+})(_react2["default"].Component);
 
-_react2['default'].render(_react2['default'].createElement(CommentBox, null), document.getElementById('container'));
+var CommentList = (function (_React$Component2) {
+  _inherits(CommentList, _React$Component2);
+
+  function CommentList() {
+    _classCallCheck(this, CommentList);
+
+    _get(Object.getPrototypeOf(CommentList.prototype), "constructor", this).apply(this, arguments);
+  }
+
+  _createClass(CommentList, [{
+    key: "render",
+    value: function render() {
+      return _react2["default"].createElement(
+        "div",
+        { className: "commentList" },
+        "Hello, world I am a CommentList.on"
+      );
+    }
+  }]);
+
+  return CommentList;
+})(_react2["default"].Component);
+
+var CommentFrom = (function (_React$Component3) {
+  _inherits(CommentFrom, _React$Component3);
+
+  function CommentFrom() {
+    _classCallCheck(this, CommentFrom);
+
+    _get(Object.getPrototypeOf(CommentFrom.prototype), "constructor", this).apply(this, arguments);
+  }
+
+  _createClass(CommentFrom, [{
+    key: "render",
+    value: function render() {
+      return _react2["default"].createElement(
+        "div",
+        { className: "commentForm" },
+        "Hello, World I am a CommentForm."
+      );
+    }
+  }]);
+
+  return CommentFrom;
+})(_react2["default"].Component);
+
+_react2["default"].render(_react2["default"].createElement(CommentBox, null), document.getElementById('container'));
 
 },{"react":158}],2:[function(require,module,exports){
 (function (process){
