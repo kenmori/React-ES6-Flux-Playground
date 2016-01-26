@@ -99,7 +99,7 @@ var CommentBox = (function (_React$Component) {
           null,
           'Comments'
         ),
-        _react2['default'].createElement(_CommentList2['default'], null),
+        _react2['default'].createElement(_CommentList2['default'], { data: this.props.data }),
         _react2['default'].createElement(_CommentForm2['default'], null)
       );
     }
@@ -197,19 +197,17 @@ var CommentList = (function (_React$Component) {
   _createClass(CommentList, [{
     key: 'render',
     value: function render() {
+      var commentNodes = this.props.data.map(function (comment) {
+        return _react2['default'].createElement(
+          _Comment2['default'],
+          { author: comment.author },
+          comment.text
+        );
+      });
       return _react2['default'].createElement(
         'div',
         { className: 'commentList' },
-        _react2['default'].createElement(
-          _Comment2['default'],
-          { author: 'kenji morita' },
-          'This is one comment'
-        ),
-        _react2['default'].createElement(
-          _Comment2['default'],
-          { author: 'takehiro morita' },
-          'This is two comment'
-        )
+        commentNodes
       );
     }
   }]);
@@ -219,7 +217,6 @@ var CommentList = (function (_React$Component) {
 
 exports['default'] = CommentList;
 module.exports = exports['default'];
-/* set attribue 'author, and then pass value' */
 
 },{"./Comment":1,"react":162}],5:[function(require,module,exports){
 'use strict';
@@ -234,7 +231,8 @@ var _componentsCommentBox = require('./components/CommentBox');
 
 var _componentsCommentBox2 = _interopRequireDefault(_componentsCommentBox);
 
-_react2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], null), document.getElementById('container'));
+var data = [{ author: 'kenji', text: 'This is one comment' }, { author: 'morita', text: 'This is *author* comment' }];
+_react2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], { data: data }), document.getElementById('container'));
 
 },{"./components/CommentBox":2,"react":162}],6:[function(require,module,exports){
 (function (process){
