@@ -1,0 +1,4 @@
+[
+  {author : 'kenji', text: 'This is one comment'},
+  {author : 'morita', text: 'This is *author* comment'}
+];
