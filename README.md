@@ -1,6 +1,10 @@
-# react
+# react flux
 
-[code]
+leran flux
+flux-dispatcher-sample-master
+
+```javascript
+
 var Dispatcher = require("flux").Dispatcher;
 var EventEmitter = require("events").EventEmitter;
 var assign = require("object-assign");
@@ -98,4 +102,4 @@ React.render(
   document.getElementById("content")
 );
 
-[/code]
+```
