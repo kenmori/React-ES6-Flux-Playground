@@ -1,4 +1,4 @@
 [
-  {author : 'kenji', text: 'This is one comment'},
-  {author : 'morita', text: 'That is *author* comment'}
-];
+  {"author" : "kenji", "text": "This is one eee"},
+  {"author" : "morita", "text": "That is *fafafa* comment"}
+]
