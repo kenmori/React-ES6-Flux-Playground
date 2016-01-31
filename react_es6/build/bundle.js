@@ -261,7 +261,7 @@ var _componentsCommentBox = require('./components/CommentBox');
 
 var _componentsCommentBox2 = _interopRequireDefault(_componentsCommentBox);
 
-_react2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], { url: 'comment.json', pollInterval: 2000 }), document.getElementById('container'));
+_react2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], { url: 'comments.json', pollInterval: 2000 }), document.getElementById('container'));
 
 },{"./components/CommentBox":2,"react":163}],6:[function(require,module,exports){
 (function (process){
