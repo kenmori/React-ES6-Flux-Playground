@@ -3,9 +3,11 @@ import React from 'react'
 export default class CommentForm extends React.Component {
   render() {
     return (
-      <div className='commentForm'>
-        Hello, World I am a CommentForm.
-      </div>
+      <form className='commentForm'>
+        <input type="text" placeholder="Youre name" />
+        <input type="text" placeholder="Say something..." />
+        <input type="submit" value="Post" />
+      </form>
     );
   }
 }
