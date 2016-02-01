@@ -16,7 +16,7 @@ export default class CommentBox extends React.Component {
       dataType: 'json',
       cache: false,
       success: (data) => {
-        this.setState({data: data};);
+        this.setState({data: data});
       },
       error: (xhr, status, err) => {
         console.error(this.props.url, status, err.toString());

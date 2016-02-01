@@ -175,9 +175,11 @@ var CommentForm = (function (_React$Component) {
     key: 'render',
     value: function render() {
       return _react2['default'].createElement(
-        'div',
+        'form',
         { className: 'commentForm' },
-        'Hello, World I am a CommentForm.'
+        _react2['default'].createElement('input', { type: 'text', placeholder: 'Youre name' }),
+        _react2['default'].createElement('input', { type: 'text', placeholder: 'Say something...' }),
+        _react2['default'].createElement('input', { type: 'submit', value: 'Post' })
       );
     }
   }]);
