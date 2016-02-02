@@ -172,6 +172,16 @@ var CommentForm = (function (_React$Component) {
   }
 
   _createClass(CommentForm, [{
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var author = _react2['default'].findDOMNode(this.refs.author).value.trim();
+      var text = _react2['default'].findDOMNode(this.refs.text).vale.trim();
+      if (!text || !author) return;
+      _react2['default'].findDOMNode(this.refs.author).value = '';
+      _react2['default'].findDOMNode(this.refs.text).value = '';
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2['default'].createElement(
