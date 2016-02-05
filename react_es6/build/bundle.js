@@ -178,6 +178,7 @@ var CommentForm = (function (_React$Component) {
       var author = _react2['default'].findDOMNode(this.refs.author).value.trim();
       var text = _react2['default'].findDOMNode(this.refs.text).vale.trim();
       if (!text || !author) return;
+      this.props.onCommentSubmit({ author: author, text: text });
       _react2['default'].findDOMNode(this.refs.author).value = '';
       _react2['default'].findDOMNode(this.refs.text).value = '';
     }
@@ -186,7 +187,7 @@ var CommentForm = (function (_React$Component) {
     value: function render() {
       return _react2['default'].createElement(
         'form',
-        { className: 'commentForm' },
+        { className: 'commentForm', onSubmit: this.handleSubmit.bind(this) },
         _react2['default'].createElement('input', { type: 'text', placeholder: 'Youre name' }),
         _react2['default'].createElement('input', { type: 'text', placeholder: 'Say something...' }),
         _react2['default'].createElement('input', { type: 'submit', value: 'Post' })
