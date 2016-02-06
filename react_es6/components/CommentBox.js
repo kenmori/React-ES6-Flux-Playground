@@ -1,7 +1,6 @@
 import React from 'react'
 import CommentList from './CommentList'
 import CommentForm from './CommentForm'
-import AudioComponent from './AudioComponent'
 import $ from 'jquery'
 
 export default class CommentBox extends React.Component {
@@ -17,12 +16,24 @@ export default class CommentBox extends React.Component {
       dataType: 'json',
       cache: false,
       success: (data) => {
-        this.setState({data: data});
-      },
+        this.setState({data: data}); },
       error: (xhr, status, err) => {
         console.error(this.props.url, status, err.toString());
       }
     });
+  }
+  handleCommentSubmit(comment){
+    debugger;
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: comment,
+      success: (data) => { this.setState({data: data});},
+      error: (xhr, status, err) => {
+        console.error(this.props.url, status, err.toString());
+      }
+    })
   }
   componentDidMount(){
     this.loadCommentsFromServer();
@@ -32,9 +43,8 @@ export default class CommentBox extends React.Component {
     return (
       <div className="commentBox">
         <h2>Comments</h2>
-        <AudioComponent />
         <CommentList data={this.state.data} />
-        <CommentForm />
+        <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
       </div>
     );
   }
