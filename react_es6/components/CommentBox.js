@@ -1,14 +1,24 @@
 import React from 'react'
 import CommentList from './CommentList'
 import CommentForm from './CommentForm'
+import ActionCreater from './ActionCreater'
+import Store from './Store'
+import EventEmitter from './EventEmitter'
+var dispatcher = new EventEmitter();
+var action = new ActionCreater(dispatcher);
+var store = new Store(dispatcher);
 import $ from 'jquery'
 
 export default class CommentBox extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      data: []
+      data: [],
+      count: store.getCount()
     };
+    store.on("CHANGE", ()=>{
+      this._onChange();
+    })
   }
   loadCommentsFromServer(){
     $.ajax({
@@ -39,12 +49,23 @@ export default class CommentBox extends React.Component {
     this.loadCommentsFromServer();
     setInterval(this.loadCommentsFromServer.bind(this), this.props.pollInterval);
   }
+
+  _onChange() {
+    console.trace();// <= onChangeまでのコールスタックを吐く
+    this.setState({count: store.getCount()});
+  }
+  tick(){
+    action.countUp(this.state.count + 1);
+  }
+
   render(){
     return (
       <div className="commentBox">
         <h2>Comments</h2>
         <CommentList data={this.state.data} />
         <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
+        <button onClick={this.tick.bind(this)}>Count Up</button>
+        <p>Count : {this.state.count}</p>
       </div>
     );
   }
