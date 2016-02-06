@@ -214,24 +214,8 @@ var CommentBox = (function (_React$Component) {
       return _react2['default'].createElement(
         'div',
         { className: 'commentBox' },
-        _react2['default'].createElement(
-          'h2',
-          null,
-          'Comments'
-        ),
         _react2['default'].createElement(_CommentList2['default'], { data: this.state.data }),
-        _react2['default'].createElement(_CommentForm2['default'], { onCommentSubmit: this.handleCommentSubmit.bind(this) }),
-        _react2['default'].createElement(
-          'button',
-          { onClick: this.tick.bind(this) },
-          'Count Up'
-        ),
-        _react2['default'].createElement(
-          'p',
-          null,
-          'Count : ',
-          this.state.count
-        )
+        _react2['default'].createElement(_CommentForm2['default'], { onCommentSubmit: this.handleCommentSubmit.bind(this) })
       );
     }
   }]);
@@ -241,6 +225,10 @@ var CommentBox = (function (_React$Component) {
 
 exports['default'] = CommentBox;
 module.exports = exports['default'];
+/*<div className="clickCount">
+ <button onClick={this.tick.bind(this)}>Count Up</button>
+ <p>Count : {this.state.count}</p>
+</div> */
 
 },{"./ActionCreater":1,"./CommentForm":4,"./CommentList":5,"./EventEmitter":6,"./Store":7,"jquery":36,"react":167}],4:[function(require,module,exports){
 'use strict';
