@@ -33,7 +33,6 @@ export default class CommentBox extends React.Component {
     });
   }
   handleCommentSubmit(comment){
-    debugger;
     $.ajax({
       url: this.props.url,
       dataType: 'json',

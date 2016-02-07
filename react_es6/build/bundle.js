@@ -177,7 +177,6 @@ var CommentBox = (function (_React$Component) {
     value: function handleCommentSubmit(comment) {
       var _this3 = this;
 
-      debugger;
       _jquery2['default'].ajax({
         url: this.props.url,
         dataType: 'json',
@@ -214,6 +213,11 @@ var CommentBox = (function (_React$Component) {
       return _react2['default'].createElement(
         'div',
         { className: 'commentBox' },
+        _react2['default'].createElement(
+          'h2',
+          null,
+          '今日の晩ご飯'
+        ),
         _react2['default'].createElement(_CommentList2['default'], { data: this.state.data }),
         _react2['default'].createElement(_CommentForm2['default'], { onCommentSubmit: this.handleCommentSubmit.bind(this) })
       );
@@ -333,7 +337,7 @@ var CommentList = (function (_React$Component) {
       var commentNodes = this.props.data.map(function (comment) {
         return _react2['default'].createElement(
           _Comment2['default'],
-          { author: comment.author },
+          { className: 'comment', author: comment.author },
           comment.text
         );
       });
@@ -458,7 +462,7 @@ var _componentsCommentBox = require('./components/CommentBox');
 
 var _componentsCommentBox2 = _interopRequireDefault(_componentsCommentBox);
 
-_react2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], { url: 'comments.json', pollInterval: 2000 }), document.getElementById('container'));
+_react2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], { url: 'comments.json', pollInterval: 112000 }), document.getElementById('container'));
 
 },{"./components/CommentBox":3,"react":167}],9:[function(require,module,exports){
 (function (process){
