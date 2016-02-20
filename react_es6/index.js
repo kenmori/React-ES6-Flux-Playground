@@ -1,8 +1,8 @@
 import React from 'react'
-import CommentBox from './components/CommentBox'
-
+// import CommentBox from './components/CommentBox'
+import FormComponent from './component2/FormComponent'
 
 React.render(
-  <CommentBox url="comments.json" pollInterval={112000} />,
+  <FormComponent />,
   document.getElementById('container')
 );

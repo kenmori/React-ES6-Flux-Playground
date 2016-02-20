@@ -23,6 +23,7 @@ gulp.task('browser-sync', function() {
 // Javascriptへのビルド
 // ES6かつJSXなファイル群をbuild/bundle.jsへ変換する
 gulp.task('build', function() {
+  debugger;
 browserify({entries: ['./index.js']})
   .transform(babelify)
   .bundle()
@@ -43,7 +44,7 @@ gulp.task('server', function() {
 gulp.task('watch', function() {
   gulp.watch('./index.js', ['build']);
   gulp.watch('./index.html', ['build']);
-  gulp.watch('./components/*.js', ['build']);
+  gulp.watch('./component2/*.js', ['build']);
 });
 
 // gulpコマンドで起動したときのデフォルトタスク
