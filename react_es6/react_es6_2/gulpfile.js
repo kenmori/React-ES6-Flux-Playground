@@ -8,6 +8,7 @@ var sourcemaps  = require('gulp-sourcemaps');
 var filter      = require('gulp-filter');
 var nodemon     = require('gulp-nodemon');
 var browserSync = require('browser-sync').create();
+var webpack     = require('gulp-webpack');
 
 gulp.task('browserify', function() {
   browserify('./src/index.js', { debug: true })
