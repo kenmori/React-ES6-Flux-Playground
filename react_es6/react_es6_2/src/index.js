@@ -1,21 +1,47 @@
 "use strict";
 
-import React  from 'react';
-import $      from 'jquery';
+import React from 'react';
+import $ from 'jquery';
 import marked from 'marked';
-import CommentForm from './toutereal/CommentForm';
+import Count from './component/Count';
 
-export default class Hello extends React.Component {
+export default class HelloReact extends React.Component {
   constructor(props){
       super(props);
+      this.countUp = this._onCountUp.bind(this);
+      this.countDown = this._onCountDown.bind(this);
+      this.reset = this._onReset.bind(this);
+      this.state = {
+        count: 0
+      }
+  }
+
+  _onCountUp(){
+    let count = this.state.count += 1;
+    this.setState({count : count});
+  }
+  _onCountDown(){
+    let count = this.state.count -= 1;
+    this.setState({count : count});
+  }
+  _onReset(){
+    let count = this.state.count = 0;
+    this.setState({count : count});
   }
   render(){
     return(
-      <div>iie</div>
+      <div>
+        <Count
+         count={this.state.count}
+         countUp={this._onCountUp.bind(this)}
+         countDown={this._onCountDown.bind(this)}
+         reset={this._onReset.bind(this)}
+          />
+      </div>
     );
   }
 }
 React.render(
-  <Hello/>,
+  <HelloReact />,
   document.getElementById('content')
 );
