@@ -12,6 +12,7 @@
     "body-parser": "^1.13.2",
     "browser-sync": "^2.8.0",
     "browserify": "^11.0.0",
+    "events": "^1.1.0",
     "express": "^4.13.1",
     "flux": "^2.1.1",
     "gulp": "^3.9.1",
