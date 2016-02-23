@@ -1,6 +1,6 @@
-import {AppDispatcher} from 'dispatcher/AppDispatcher';
-import {BasicStore} from 'store/BasicStore';
-import {ListConstants} from 'constants/ListConstants';
+import {AppDispatcher} from '../dispatcher/AppDispatcher';
+import {BasicStore} from './BasicStore';
+import {ListConstants} from '../constants/ListConstants';
 
 export class Store extends BasicStore {
     constructor(){

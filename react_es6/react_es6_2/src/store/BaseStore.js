@@ -1,10 +1,10 @@
-import EventEmitter from 'lib/events';
-import {BaseConstants} from 'constants/BaseConstants';
+import EventEmitter from './EventEmitter';
+import {BaseConstants} from '../constants/BaseConstants';
 
 export class BaseStore extends EventEmitter {
 
-	constructor() {
-		this.state = {};
+	constructor(props) {
+		super(props);
 	}
 
 	emitChangeState(key) {
@@ -19,7 +19,7 @@ export class BaseStore extends EventEmitter {
 		this.removeListener(key, callback);
 	}
 
-    getState() {
-        return this.state;
-    }
+  getState() {
+      return this.state;
+  }
 }

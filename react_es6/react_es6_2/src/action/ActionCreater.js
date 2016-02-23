@@ -1,6 +1,6 @@
-import {AppDispatcher} from 'dispatcher/AppDispatcher';
-import {ListApiClient} from 'utils/ListApiClient';
-import {ListConstants} from 'constants/ListConstants';
+import {AppDispatcher} from '../dispatcher/AppDispatcher';
+import {ListApiClient} from '../utils/ListApiClient';
+import {ListConstants} from '../constants/ListConstants';
 
 /**
  * Actionクラス
