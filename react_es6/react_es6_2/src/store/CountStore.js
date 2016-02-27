@@ -6,7 +6,6 @@ class Store extends EventEmitter{
     constructor(props){
       super(props);
         this.count = 0;
-        this.countUp;
     }
     emitChangeState() {
       this.emit(CountConstants.DISPATCH_CHANGE_STATE);
@@ -17,18 +16,34 @@ class Store extends EventEmitter{
     removeChangeStateListener(callback){
       this.removeListener(CountConstants.DISPATCH_CHANGE_STATE, callback)
     }
+    countUp(){
+      this.count = this.count + 1;
+    }
+    countDown(){
+      this.count = this.count - 1;
+    }
+    getCount(){
+      return this.count;
+    }
+    countReset() {
+      this.count = 0;
+    }
 }
-
 export var CountStore = new Store();
-CountStore.countUp = () => {
-  CountStore.count = CountStore.count + 1;
-  return CountStore.count;
-}
 
 AppDispatcher.register((action) => {
 	switch (action.actionType) {
-		case CountConstants.DISPATCH_CHANGE_COUNT:
+		case CountConstants.DISPATCH_CHANGE_UP:
+      CountStore.countUp();
 			CountStore.emitChangeState();
 			break;
+    case CountConstants.DISPATCH_CHANGE_DOWN:
+      CountStore.countDown();
+      CountStore.emitChangeState();
+      break;
+    case CountConstants.DISPATCH_CHANGE_RESET:
+      CountStore.countReset();
+      CountStore.emitChangeState();
+      break;
 	}
 });

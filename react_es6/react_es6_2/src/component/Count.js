@@ -8,10 +8,9 @@ import {CountConstants} from '../constants/CountConstants';
 export default class CountComponent extends React.Component {
   constructor(props){
     super(props);
-    this._onChangeUp = this._onChangeUp.bind(this);
     this._changeState = this._changeState.bind(this);
     this.state = {
-      count : CountStore.countUp()
+      count : CountStore.getCount()
     }
   }
   getInitialState(){
@@ -26,21 +25,42 @@ export default class CountComponent extends React.Component {
   _onChangeUp(){
     CountAction.onChangeUp();
   }
+  _onChangeDown(){
+    CountAction.onChangeDown();
+  }
+  _onChangeReset(){
+    CountAction.onChangeReset();
+  }
   _getState(){
     return {
-      count : CountStore.countUp()
+      count : CountStore.getCount()
     }
   }
   _changeState() {
     this.setState(this._getState());
   }
   render() {
-    return (
-      <div className="count">
-        <h3>Push Up Down</h3>
-        <div>{this.state.count}</div>
-          <button onClick={this._onChangeUp}>up</button>
-      </div>
-    );
+
+      if( this.state.count != 0 && (this.state.count % 3) == 0 || this.state.count.toString().match(/3/) ){
+        return (
+          <div className="count">
+            <h3>3 multiples or include 3 string</h3>
+            <div>{this.state.count}</div>
+              <button onClick={this._onChangeUp}>up</button>
+              <button onClick={this._onChangeDown}>down</button>
+              <button onClick={this._onChangeReset}>reset</button>
+          </div>
+        )
+      }else {
+        return (
+          <div className="count">
+            <h3>Current is ...</h3>
+            <div>{this.state.count}</div>
+              <button onClick={this._onChangeUp}>up</button>
+              <button onClick={this._onChangeDown}>down</button>
+              <button onClick={this._onChangeReset}>reset</button>
+          </div>
+        );
+      }
   }
 }
