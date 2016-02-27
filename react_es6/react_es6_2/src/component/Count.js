@@ -5,21 +5,20 @@ import {CountAction} from '../action/CountAction'
 import {CountStore} from '../store/CountStore'
 import {CountConstants} from '../constants/CountConstants';
 
-export default class Count extends React.Component {
+export default class CountComponent extends React.Component {
   constructor(props){
     super(props);
     this._onChangeUp = this._onChangeUp.bind(this);
     this._changeState = this._changeState.bind(this);
     this.state = {
-      count : 0
+      count : CountStore.countUp()
     }
   }
   getInitialState(){
-    return _getState();
+    return this._getState();
   }
   componentDidMount(){
     CountStore.addChangeStateListener(this._changeState);
-    CountAction.onChangeUp();
   }
   componentWiiUnmount(){
     CountStore.removeListener(this._changeState)
@@ -29,7 +28,7 @@ export default class Count extends React.Component {
   }
   _getState(){
     return {
-      count : CountStore.getItems()
+      count : CountStore.countUp()
     }
   }
   _changeState() {
@@ -39,8 +38,8 @@ export default class Count extends React.Component {
     return (
       <div className="count">
         <h3>Push Up Down</h3>
-        <div>{this._getState.bind(this)}</div>
-        <button onClick={this._onChangeUp.bind(this)}>up</button>
+        <div>{this.state.count}</div>
+          <button onClick={this._onChangeUp}>up</button>
       </div>
     );
   }
