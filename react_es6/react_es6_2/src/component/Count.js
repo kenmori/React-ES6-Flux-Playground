@@ -8,10 +8,9 @@ import {CountConstants} from '../constants/CountConstants';
 export default class CountComponent extends React.Component {
   constructor(props){
     super(props);
-    this._onChangeUp = this._onChangeUp.bind(this);
     this._changeState = this._changeState.bind(this);
     this.state = {
-      count : CountStore.countUp()
+      count : CountStore.getCount()
     }
   }
   getInitialState(){
@@ -26,9 +25,15 @@ export default class CountComponent extends React.Component {
   _onChangeUp(){
     CountAction.onChangeUp();
   }
+  _onChangeDown(){
+    CountAction.onChangeDown();
+  }
+  _onChangeReset(){
+    CountAction.onChangeReset();
+  }
   _getState(){
     return {
-      count : CountStore.countUp()
+      count : CountStore.getCount()
     }
   }
   _changeState() {
@@ -37,9 +42,11 @@ export default class CountComponent extends React.Component {
   render() {
     return (
       <div className="count">
-        <h3>Push Up Down</h3>
+        <h3>Push Up Down Reset</h3>
         <div>{this.state.count}</div>
           <button onClick={this._onChangeUp}>up</button>
+          <button onClick={this._onChangeDown}>down</button>
+          <button onClick={this._onChangeReset}>reset</button>
       </div>
     );
   }
