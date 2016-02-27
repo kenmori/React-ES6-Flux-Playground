@@ -1,6 +1,6 @@
 import {AppDispatcher} from '../dispatcher/AppDispatcher';
 import {CountConstants} from '../constants/CountConstants';
-import {CountStore} from '../store/CountStore';
+import CountStore from '../store/CountStore';
 
 
 export var CountAction = {
@@ -8,10 +8,5 @@ export var CountAction = {
       AppDispatcher.dispatch({
         actionType: CountConstants.DISPATCH_CHANGE_COUNT
       });
-    },
-    getState() {
-        AppDispatcher.dispatch({
-          actionType: CountConstants.DISPATCH_CHANGE_STATE
-        })
     }
 };

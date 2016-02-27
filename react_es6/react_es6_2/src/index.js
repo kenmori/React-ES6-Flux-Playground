@@ -3,13 +3,13 @@
 import React from 'react';
 import $ from 'jquery';
 import marked from 'marked';
-import Count from './component/Count';
+import CountComponent from './component/Count';
 
 export default class HelloReact extends React.Component {
   render(){
     return(
       <div>
-        <Count />
+        <CountComponent />
       </div>
     );
   }
