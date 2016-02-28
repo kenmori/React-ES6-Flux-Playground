@@ -1,9 +1,10 @@
 "use strict";
 
-import React  from 'react';
+import React from 'react';
 import {CountAction} from '../action/CountAction'
 import {CountStore} from '../store/CountStore'
 import {CountConstants} from '../constants/CountConstants';
+import CountButtonComponent from '../component/CountButtonComponent';
 
 export default class CountComponent extends React.Component {
   constructor(props){
@@ -40,25 +41,29 @@ export default class CountComponent extends React.Component {
     this.setState(this._getState());
   }
   render() {
-
       if( this.state.count != 0 && (this.state.count % 3) == 0 || this.state.count.toString().match(/3/) ){
         return (
           <div className="count">
-            <h3>3 multiples or include 3 string</h3>
-            <div>{this.state.count}</div>
-              <button onClick={this._onChangeUp}>up</button>
-              <button onClick={this._onChangeDown}>down</button>
-              <button onClick={this._onChangeReset}>reset</button>
+            <h3>にゃ〜</h3>
+              <div className="countValue">{this.state.count}</div>
+              <div className="catImg"><img src="./image/cat.png" alt="" /></div>
+              <CountButtonComponent
+                ChangeUp={this._onChangeUp.bind(this)}
+                ChangeDown={this._onChangeDown.bind(this)}
+                ChangeReset={this._onChangeReset.bind(this)}
+               />
           </div>
-        )
+        );
       }else {
         return (
           <div className="count">
             <h3>Current is ...</h3>
-            <div>{this.state.count}</div>
-              <button onClick={this._onChangeUp}>up</button>
-              <button onClick={this._onChangeDown}>down</button>
-              <button onClick={this._onChangeReset}>reset</button>
+              <div className="stateCount">{this.state.count}</div>
+                <CountButtonComponent
+                  ChangeUp={this._onChangeUp.bind(this)}
+                  ChangeDown={this._onChangeDown.bind(this)}
+                  ChangeReset={this._onChangeReset.bind(this)}
+                 />
           </div>
         );
       }
