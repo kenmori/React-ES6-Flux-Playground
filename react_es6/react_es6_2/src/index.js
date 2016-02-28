@@ -2,8 +2,7 @@
 
 import React from 'react';
 import $ from 'jquery';
-import marked from 'marked';
-import CountComponent from './component/Count';
+import CountComponent from './component/CountComponent';
 
 export default class HelloReact extends React.Component {
   render(){
