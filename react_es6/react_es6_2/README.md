@@ -1,3 +1,11 @@
+
+## 【React × ES6 × Flux】を手っ取り早く学びたい人の為にサンプル作ったよ【3の倍数と3が付くときだけ猫になるCounter】
+
+[3の倍数と3の付くときだけ猫が出る](http://kenjimorita.jp/wp-content/uploads/2016/02/AWS11-53.gif)
+
+[http://kenjimorita.jp/react-x-es6-x-flux/](http://kenjimorita.jp/react-x-es6-x-flux/)
+
+
 # React Tutorial ES6
 
 This is [the React tutorial](http://facebook.github.io/react/docs/tutorial.html) that was rewritten in ECMAScript 2015 aka ES6.
