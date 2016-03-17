@@ -1,12 +1,10 @@
-"use strict"
-
 import React from 'react';
 
-export default class CountButtonComponent extends React.Component{
-  constructor(props){
+export default class CountButtonComponent extends React.Component {
+  constructor(props) {
     super(props);
   }
-  render(){
+  render() {
     return (
       <div className="form-group">
         <div className="col-sm-offset-2 col-sm-10">
@@ -15,6 +13,6 @@ export default class CountButtonComponent extends React.Component{
           <button className="btn btn-primary" onClick={this.props.ChangeReset}>reset</button>
         </div>
       </div>
-    );
+      );
   }
 }

@@ -1,16 +1,19 @@
-"use strict";
-
 import React from 'react';
 import $ from 'jquery';
 import CountComponent from './component/CountComponent';
+import FormComponent from './component/FormComponent';
 
 export default class HelloReact extends React.Component {
-  render(){
-    return(
+  constructor(props){
+    super(props);
+  }
+  render() {
+    return (
       <div>
-        <CountComponent />
+        {/*<CountComponent />*/}
+        <FormComponent />
       </div>
-    );
+      );
   }
 }
 React.render(
