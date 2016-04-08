@@ -2,7 +2,7 @@
 #playground
 react/react_es6/
 
-3counter
+#3counter
 react/react_es6/react_es6_2/
 
 # react flux
