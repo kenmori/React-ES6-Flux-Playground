@@ -1,60 +1,69 @@
 import React from 'react';
+import ChildComponent from './ChildComponent';
 
 export default class CountComponent extends React.Component {
   constructor(props) {
     super(props);
     // console.log(props, this)
     this.state = {
-      name: "morita"
+      name: 'morita'
     };
+
     // console.log(this._click.bind(this))
     // console.log(this._click)
     this._click = this._click.bind(this);
   }
   getDefaoultProps (){
-    console.log("getDefaoultProps");
+    console.log('getDefaoultProps');
   }
   getInitialState () {
-    console.log("getInitialState");
+    console.log('getInitialState');
   }
   componentWillMount() {
-    console.log("componentWillMount");
+    console.log('componentWillMount');
   }
   componentDidMount() {
-    console.log("componentDidMount");
+    console.log('componentDidMount');
   }
   componentWillReceiveProps (){
-    console.log("componentWillReciveProps");
+    console.log('componentWillReciveProps');
   }
   shouldComponentUpdate (nextProps, nextState, context){
     console.log(nextState)
     console.log(this.state.name);
     console.log(context)
-    if(nextState.name == "kenji"){
+    if(nextState.name == 'kenji'){
       return true;
     } else {
       return false;
     }
   }
   componentWillUpdate (){
-    console.log("componentWillUpdate");
+    console.log('componentWillUpdate');
   }
   componentDidUpdate (){
-    console.log("componentDidUpdate");
+    console.log('componentDidUpdate');
   }
   componentWiiUnmount() {
-    console.log("componentWiiUnmount");
+    console.log('componentWiiUnmount');
   }
   _click() {
     this.setState({
-      name: "kenji"
+      name: 'kenji'
     });
   }
   render() {
+      let user = {//オブジェクトをprops経由で渡す
+        id: 10,
+        age: 22
+      };
       return  (
         <div>
           <div>
-            {this.state.name}
+            <h2>I'm ParentComponent</h2>
+            <ChildComponent user={user} name={this.state.name} renderType={1} />
+            <hr />
+            <ChildComponent user={user} name={this.state.name} renderType={2} />
           </div>
           <button onClick={this._click}>push</button>
         </div>
