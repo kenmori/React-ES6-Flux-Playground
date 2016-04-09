@@ -1,23 +1,20 @@
 import React from 'react';
+import {render} from 'react-dom';
 import ChildComponent from './ChildComponent';
+import FormParentComponent from './FormParentComponent.js';
 
-export default class CountComponent extends React.Component {
+export default class ParentComponent extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(props, this)
     this.state = {
-      name: 'morita'
+      name: 'morita',
+      renderType: null,
+      id: 10
     };
-
     // console.log(this._click.bind(this))
     // console.log(this._click)
     this._click = this._click.bind(this);
-  }
-  getDefaoultProps (){
-    console.log('getDefaoultProps');
-  }
-  getInitialState () {
-    console.log('getInitialState');
+    this._changeStateClick = this._changeStateClick.bind(this);
   }
   componentWillMount() {
     console.log('componentWillMount');
@@ -25,23 +22,23 @@ export default class CountComponent extends React.Component {
   componentDidMount() {
     console.log('componentDidMount');
   }
-  componentWillReceiveProps (){
+  componentWillReceiveProps(nextProps) {
     console.log('componentWillReciveProps');
   }
-  shouldComponentUpdate (nextProps, nextState, context){
-    console.log(nextState)
+  shouldComponentUpdate(nextProps, nextState, context) {
+    console.log(nextState);
     console.log(this.state.name);
-    console.log(context)
+    console.log(context);
     if(nextState.name == 'kenji'){
       return true;
     } else {
       return false;
     }
   }
-  componentWillUpdate (){
+  componentWillUpdate(){
     console.log('componentWillUpdate');
   }
-  componentDidUpdate (){
+  componentDidUpdate(){
     console.log('componentDidUpdate');
   }
   componentWiiUnmount() {
@@ -52,14 +49,34 @@ export default class CountComponent extends React.Component {
       name: 'kenji'
     });
   }
+  _changeStateClick(addCount) {
+    this.setState({
+      renderType: addCount
+    });
+  }
   render() {
-      let user = {//オブジェクトをprops経由で渡す
+      //オブジェクトをprops経由で渡す
+      let user = {
         id: 10,
         age: 22
       };
       return  (
         <div>
+          <div className={`ratewrap${this.state.id} iii`}>
+            {
+              
+            }
+            <p className='rate'>1</p>
+            <p className='rate'>2</p>
+            <p className='rate'>3</p>
+            <p className='rate'>4</p>
+            <p className='rate'>5</p>
+            { this.state.id == 10 ? <div>eee</div> : ''}
+          </div>
           <div>
+            <FormParentComponent
+              renderType={this.state.renderType}
+              func={this._changeStateClick} />
             <h2>I'm ParentComponent</h2>
             <ChildComponent user={user} name={this.state.name} renderType={1} />
             <hr />
@@ -69,4 +86,4 @@ export default class CountComponent extends React.Component {
         </div>
       );
     }
-  }
+  };

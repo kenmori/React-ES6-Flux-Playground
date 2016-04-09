@@ -5,7 +5,7 @@ export default class GrandsonComponent extends React.Component {
     super(props);
     console.log(props);
   }
-  getDefaultProps(){
+  defaultProps(){
     return {
       name: 'keiko'
     };
