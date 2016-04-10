@@ -2,6 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import ChildComponent from './ChildComponent';
 import FormParentComponent from './FormParentComponent.js';
+import Timer from './Timer.js';
 
 export default class ParentComponent extends React.Component {
   constructor(props) {
@@ -67,8 +68,11 @@ export default class ParentComponent extends React.Component {
             <p className='rate'>{`${map[this.state.id]}`}</p>
             { this.state.id == 10 ? <div>eee</div> : ''}
           </div>*/}
+          <Timer />
           <div>
-            <FormParentComponent renderType={this.state.renderType} func={this._changeStateClick} />
+            <FormParentComponent
+              renderType={this.state.renderType}
+              func={this._changeStateClick} />
             <h2>I'm ParentComponent</h2>
             <ChildComponent user={user} name={this.state.name} renderType={1} />
             <hr />
