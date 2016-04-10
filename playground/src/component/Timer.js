@@ -23,7 +23,7 @@ export default class Timer extends React.Component {
     }
     onChange(event){
         this.setState({
-            myText: this.refs.inputText.value
+            myText: this.refs.inputText.value//or event.target.value
         });
     }
     onBlur(event){

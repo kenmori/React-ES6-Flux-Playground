@@ -2,6 +2,7 @@ import React from 'react';
 import FormChildComponent from './FormChildComponent.js';
 import AnswerRadioInput from './AnswerRadioInput';
 import AddList from './AddList';
+import CommentComponent from './CommentComponent';
 export default class FormParentComponent extends React.Component {
   constructor(props){
       super(props);
@@ -55,9 +56,14 @@ export default class FormParentComponent extends React.Component {
       })();}
     return(
         <div>
-          <h3>add count in child Component, and then receive props to parent</h3>
-          <AddList addCountToParent={this.addCountFromParent} count={this.state.count} />
+          <h3>
+            add count in child Component, and then receive props to parent
+          </h3>
+          <AddList
+            addCountToParent={this.addCountFromParent}
+            count={this.state.count} />
           <h3>Register form</h3>
+          <CommentComponent data={this.props.data} />
           <form>
               <label name="name" value="名前" />
                 <input
@@ -84,4 +90,11 @@ export default class FormParentComponent extends React.Component {
         </div>
     );
   }
+};
+
+FormParentComponent.defaultProps = {
+  data : [
+    { name: 'kenji', coment : 'hi!' },
+    {name: 'keiko', comment: 'yha'}
+  ]
 };
