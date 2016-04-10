@@ -9,9 +9,16 @@ export default class FormParentComponent extends React.Component {
         name : '',
         age : null,
         country: '',
-        dropZoneEntered: false
+        dropZoneEntered: false,
+        count: 0
       };
       this._getName = this._getName.bind(this);
+      this.addCountFromParent = this.addCountFromParent.bind(this);
+  }
+
+  shouldComponentUpdate(){
+    console.log('shouldComponentUpdate');
+    return true;
   }
   _getName(e) {
     this.setState({
@@ -37,6 +44,11 @@ export default class FormParentComponent extends React.Component {
   // handleDrop(){
   //
   // }
+  addCountFromParent(value){
+    this.setState({
+      count : value + 1
+    });
+  }
   render() {
       {(()=>{
 
@@ -44,7 +56,7 @@ export default class FormParentComponent extends React.Component {
     return(
         <div>
           <h3>add count in child Component, and then receive props to parent</h3>
-          <AddList />
+          <AddList addCountToParent={this.addCountFromParent} count={this.state.count} />
           <h3>Register form</h3>
           <form>
               <label name="name" value="名前" />
@@ -52,7 +64,7 @@ export default class FormParentComponent extends React.Component {
                    onChange={this._getName}
                    type="text"
                    name="name"
-                   ref="name"/>
+                   ref="name" />
                 <p>{this.state.name}</p>
               <label name="age" value="生年月日" />
                 <input type="text" name="age" ref="age" />
