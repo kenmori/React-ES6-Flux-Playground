@@ -12,15 +12,11 @@ export default class CommentComponent extends React.Component {
       return output;
   }
   render() {
-    // TODO:this.props.dataを受けてlistの描画
-    // var lists = this.props.data.forEach((data,index) => {
-    //     return (
-    //       <div>{data[index]}</div>
-    //   );
-    // });
     let isShowComponent = true;
+    let isClass = (isShowComponent ? 'isShow' : '');
     return (
       <div>
+        <div className={`fs14 ${isClass}`}></div>
         <div>{<ul>{this.createItems(this.props.items)}</ul>}</div>
         <div>
           {isShowComponent ? <CommentChildComponent /> : null}
