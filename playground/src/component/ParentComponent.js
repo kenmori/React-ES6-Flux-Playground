@@ -57,26 +57,18 @@ export default class ParentComponent extends React.Component {
   render() {
       //オブジェクトをprops経由で渡す
       let user = {
-        id: 10,
+        id: 3,
         age: 22
       };
+      // const map = ['待機中','鑑定中', '予約受付中', '時間外'];
       return  (
         <div>
-          <div className={`ratewrap${this.state.id} iii`}>
-            {
-              
-            }
-            <p className='rate'>1</p>
-            <p className='rate'>2</p>
-            <p className='rate'>3</p>
-            <p className='rate'>4</p>
-            <p className='rate'>5</p>
+          {/*<div className={`ratewrap${this.state.id} iii`}>
+            <p className='rate'>{`${map[this.state.id]}`}</p>
             { this.state.id == 10 ? <div>eee</div> : ''}
-          </div>
+          </div>*/}
           <div>
-            <FormParentComponent
-              renderType={this.state.renderType}
-              func={this._changeStateClick} />
+            <FormParentComponent renderType={this.state.renderType} func={this._changeStateClick} />
             <h2>I'm ParentComponent</h2>
             <ChildComponent user={user} name={this.state.name} renderType={1} />
             <hr />
