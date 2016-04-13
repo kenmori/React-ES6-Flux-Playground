@@ -1,6 +1,7 @@
 
 ## 【React × ES6 × Flux】を手っ取り早く学びたい人の為にサンプル作ったよ【3の倍数と3が付くときだけ猫になるCounter】
 
+[http://kenjimorita.jp/wp-content/uploads/2016/02/AWS11-51.gif](http://kenjimorita.jp/wp-content/uploads/2016/02/AWS11-51.gif)
 
 [http://kenjimorita.jp/react-x-es6-x-flux/](http://kenjimorita.jp/react-x-es6-x-flux/)
 
