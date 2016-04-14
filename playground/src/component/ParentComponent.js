@@ -72,7 +72,7 @@ export default class ParentComponent extends React.Component {
           <div>
             <FormParentComponent
               renderType={this.state.renderType}
-              func={this._changeStateClick} />
+               func={this._changeStateClick} />
             <h2>I'm ParentComponent</h2>
             <ChildComponent user={user} name={this.state.name} renderType={1} />
             <hr />
