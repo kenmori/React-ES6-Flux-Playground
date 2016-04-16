@@ -17,35 +17,42 @@ export default class ReactCSSTransitionGroupExample extends React.Component {
     });
   }
   _handleRemove = (i)=> {
-    var newItems = this.state.items.slice();
+    let newItems = this.state.items.slice();
     newItems.splice(i, 1);
     this.setState({items: newItems});
   }
   render(){
-    var items = this.state.items.map(function(item, i){
+    let items = this.state.items.map(function (item, i){
       return (
         <div key={item} onClick={this._handleRemove.bind(this, i)}>
           {item}
+          {/*DON'T<ReactCSSTransitionGroup>*/}
+          {/*ここの時点ではMountされていないのでReactCSSTransitionGroupはMount動かない。*/}
         </div>
       );
     }.bind(this));
     return (
       <div>
-        <h3>ReactCSSTransitionGroupのsample</h3>
+        <h3>ReactCSSTransitionGroup/Listの要素をanimationさせる</h3>
         <ul>
           <li>add押下、テキストを入力します</li>
           <li>追加された箇所をClickすると消えます</li>
           <li>出現時と削除時にanimationすることを確認してください</li>
+          <li>transitionAppear="true"とすることで現存要素固定、addで追加される</li>
         </ul>
         <button onClick={this._handleAdd}>add</button>
         <p>今日やること</p>
+        {/*ReactCSSTransitionGroupはMountされたら動く*/}
         <ReactCSSTransitionGroup
           transitionName="example"
           transitionEnterTimeout={500}
-          transitionLeaveTimeout={300} >
+          transitionLeaveTimeout={300}
+          //trueの場合は省略できるx transitionAppear={true}
+          transitionAppear >
         {items}
       </ReactCSSTransitionGroup>
       <hr />
-      </div>);
+      </div>
+    );
   }
 };
