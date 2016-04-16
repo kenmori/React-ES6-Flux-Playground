@@ -13,7 +13,7 @@ gulp.task('browserify', function() {
   browserify('./src/index.js', {
     debug: true
   })
-    .transform(babelify)
+    .transform("babelify", {presets: ["es2015", "react", "stage-0"]})
     .bundle()
     .on("error", function(err) {
       console.log("Error : " + err.message);
