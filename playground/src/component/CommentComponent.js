@@ -1,40 +1,102 @@
-import React , {propTypes} from 'react';
+import React from 'react';
+import dom from 'react-dom';
 import CommentChildComponent  from './CommentChildComponent';
 export default class CommentComponent extends React.Component {
   constructor(props){
       super(props);
-      this.createItems = this.createItems.bind(this);
-      this.getStateFromChild = this.getStateFromChild.bind(this);
-      this.state = {
-        count : 0
-      };
   }
 
-  createItems(items) {
-      let output = [];
-      for (let i = 0; i < items.length; i++) output.push(<li>{items[i]}</li>);
-      return output;
-  }
-  getStateFromChild(obj){
-    obj.count = obj.count + 1;
-    console.log(obj);
-    this.setState(obj);
-  }
+  // createItems(items) {
+  //     let output = [];
+  //     for (let i = 0; i < items.length; i++) output.push(<li>{items[i]}</li>);
+  //     return output;
+  // }
   render() {
+    // TODO:this.props.dataを受けてlistの描画
+    // var lists = this.props.data.forEach((data,index) => {
+    //     return (
+    //       <div>{data[index]}</div>
+    //   );
+    // });
     let isShowComponent = true;
-    let isClass = (isShowComponent ? 'isShow' : '');
     return (
       <div>
-        <div className={`fs14 ${isClass}`}></div>
-        <div>{<ul>{this.createItems(this.props.items)}</ul>}</div>
         <div>
-          {isShowComponent ? <CommentChildComponent count={this.state.count} func={this.getStateFromChild} /> : null}
+          <Comment　name='kenji' />
+          {/*{<ul>{this.createItems(this.props.items)}</ul>}*/}
         </div>
-    </div>
+        <div>
+          {isShowComponent ? <CommentChildComponent /> : null}
+        </div>
+      </div>
     );
   }
 };
-CommentComponent.defaultProps = {
-  data : [],
-  items: [1, 2, 3, 4]
+
+
+//ES5-way
+//
+
+let Comment = React.createClass({
+ getDefaultProps(){
+   return {
+     //Comment.defaultPropsが先に呼ばれてrender()内では参照できなかった
+   };
+ },
+ componentDidMount(){
+  console.log();
+ },
+ itemName(item) {
+  return `${item.name}:${item.count}`;
+},
+ render(){
+  //  let Factory = React.createFactory();
+  //  let FactoryDom = Factory({ custom: 'prop' });
+  //  React.createClass({
+  //    render() {
+  //      return <div>{this.props.custom}</div>;
+  //  }});
+   //how to set style
+   let style = {
+    fontSize: 14
+   };
+   console.log(this.props);
+   let childChild = React.createElement('span', null, 'わたしです');
+   let child = React.createElement('div', {job: 'webdesign', style: {color: 'red' }}, childChild);
+   let items = this.props.items.map(item => <span>{this.itemName(item)}</span>);
+   return (
+     <div style={style}>{this.props.name}
+       こめんと{this.props.data}
+       <div>{child}{this.props.name}</div>
+       <div>{this.props.job}</div>
+       <div>{items}</div>
+        {React.DOM.ul({className: 'color14'}, React.DOM.li(null,'text!!!!!!'))}
+        <div></div>
+     </div>
+   );
+ }
+});
+
+
+ Comment.defaultProps = {
+   data : 'eee',
+   name: 'morita',
+   job: 'webenginier',
+   items: [
+     {
+       name:'ramen',
+       count: 1
+     },
+     {
+       name: 'gohan',
+       count: 2
+     },
+     {
+       name: 'misoshiru',
+       count: 3
+     }]
+ };
+
+CommentComponent.dedaultProps = {
+  data : []
 };
