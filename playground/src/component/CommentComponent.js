@@ -25,9 +25,12 @@ export default class CommentComponent extends React.Component {
           <Comment　name='kenji' />
           {/*{<ul>{this.createItems(this.props.items)}</ul>}*/}
         </div>
+        <hr />
+        <h3>isShowComponentがtrueの場合コンポーネントCommentChildComponent自体返しfalseの場合null返しています</h3>
         <div>
           {isShowComponent ? <CommentChildComponent /> : null}
         </div>
+        <hr />
       </div>
     );
   }

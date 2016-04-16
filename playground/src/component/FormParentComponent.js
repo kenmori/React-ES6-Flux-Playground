@@ -56,12 +56,11 @@ export default class FormParentComponent extends React.Component {
       })();}
     return(
         <div>
-          <h3>
-            add count in child Component, and then receive props to parent
-          </h3>
+          <h3>add count in child Component, and then receive props to parent</h3>
           <AddList
             addCountToParent={this.addCountFromParent}
             count={this.state.count} />
+          <hr />
           <h3>Register form</h3>
           <CommentComponent data={this.props.data} />
           <form>
