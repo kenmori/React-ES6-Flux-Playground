@@ -2,7 +2,9 @@ import React from 'react';
 import {render} from 'react-dom';
 import ChildComponent from './ChildComponent';
 import FormParentComponent from './FormParentComponent.js';
-import Timer from './Timer.js';
+import InputValidation from './InputValidation.js';
+import TodoComponent from './TodoComponent.js';
+import ReactCSSTransitionGroupExample from './ReactCSSTransitionGroupExample.js';
 
 export default class ParentComponent extends React.Component {
   constructor(props) {
@@ -68,7 +70,9 @@ export default class ParentComponent extends React.Component {
             <p className='rate'>{`${map[this.state.id]}`}</p>
             { this.state.id == 10 ? <div>eee</div> : ''}
           </div>*/}
-          <Timer />
+          <InputValidation />
+          <ReactCSSTransitionGroupExample />
+          <TodoComponent />
           <div>
             <FormParentComponent
               renderType={this.state.renderType}

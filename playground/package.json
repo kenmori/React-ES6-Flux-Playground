@@ -9,7 +9,9 @@
   "license": "MIT",
   "babel": {
     "presets": [
-      "es2015","react"
+      "es2015",
+      "react",
+      "stage-0"
     ]
   },
   "devDependencies": {
@@ -37,9 +39,15 @@
     "jquery": "^2.1.4",
     "marked": "^0.3.3",
     "npm": "^3.8.0",
-    "react": "^0.14.8",
-    "react-dom": "^0.14.8",
+    "react": "^15.0.1",
+    "react-addons-create-fragment": "^15.0.1",
+    "react-addons-css-transition-group": "^15.0.1",
+    "react-addons-pure-render-mixin": "^15.0.1",
+    "react-addons-shallow-compare": "^15.0.1",
+    "react-addons-update": "^15.0.1",
+    "react-dom": "^15.0.1",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "webpack": "^1.13.0"
   }
 }
