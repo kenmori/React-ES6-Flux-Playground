@@ -46,8 +46,8 @@ export default class CreateFragmentComponent extends React.Component {
         keyedChildren = createFragment({
           left: this.props.leftChildren,
           right: this.props.rightChildren
-        });
-      };
+      });
+    };
     return (
       <div>
         <h3>Keyed Fragments/use CreateFragment/spread Attribute</h3>

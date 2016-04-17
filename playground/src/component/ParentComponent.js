@@ -1,10 +1,11 @@
 import React from 'react';
-import {render} from 'react-dom';
+import reactDOM from 'react-dom';
 import ChildComponent from './ChildComponent';
 import FormParentComponent from './FormParentComponent';
 import InputValidation from './InputValidation';
 import TodoComponent from './TodoComponent';
 import ReactCSSTransitionGroupExample from './ReactCSSTransitionGroupExample';
+import UpdateComponent from './UpdateComponent';
 // import ReactCSSTransitionGroupImageCarousel from
 // './ReactCSSTransitionGroupImageCarousel';
 import CreateFragmentComponent from './CreateFragmentComponent';
@@ -74,18 +75,22 @@ export default class ParentComponent extends React.Component {
       props.rightChildren=<Right />;
       props.leftChildren=<Left />;
       // const map = ['待機中','鑑定中', '予約受付中', '時間外'];
+
       return  (
         <div>
           {/*<div className={`ratewrap${this.state.id} iii`}>
             <p className='rate'>{`${map[this.state.id]}`}</p>
             { this.state.id == 10 ? <div>eee</div> : ''}
           </div>*/}
+          <listElementRoot />
+          <Element />
           <InputValidation />
           <ReactCSSTransitionGroupExample />
           {/*<ReactCSSTransitionGroupImageCarousel />*/}
           <CreateFragmentComponent
             {...props} text={'override'}
           />
+          <UpdateComponent />
           <TodoComponent />
           <div>
             <FormParentComponent
@@ -102,6 +107,49 @@ export default class ParentComponent extends React.Component {
       );
     }
   };
+
+  var contacts = [
+    {key: 1, name: "James Nelson", email: "james@jamesknelson.com"},
+    {key: 2, name: "kenji", email: "kenji@fafafafa.com"},
+    {key: 3, name: "koiufa Nelson", email: "koifa@jamesknelson.com"},
+    {key: 4, name: "Bob", email: "ooo.com"}
+  ];
+
+  var email = contacts.map(function(elm, i){
+        return elm["email"];
+    });
+    var listObj = email.forEach(function (obj, i){
+      return (
+        React.createElement('li', {email: obj[i]},
+          React.createElement('span', {},
+            React.createElement('a', { href: 'mailto' + obj[i] },
+             'email' + obj[i]
+              )
+          )
+        )
+      );
+    });
+  let listElementRoot = React.createClass({
+      render(){
+        return (
+          React.createElement('div', {},
+            React.createElement('p', {}, 'contact',
+              React.createElement('ul', {}, listObj)
+            )
+          )
+        );
+      }
+    });
+
+  let Element = React.createClass({
+      render(){
+        return (
+          React.createElement('div', {age: 20},
+            React.createElement('span', {},
+              React.createElement('a', {href: 'http://kenjimorita.jp'},"kokokara")))
+        );
+      }
+  });
   let Right = React.createClass({
       render(){
         return (

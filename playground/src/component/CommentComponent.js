@@ -22,7 +22,7 @@ export default class CommentComponent extends React.Component {
     return (
       <div>
         <div>
-          <Comment　name='kenji' />
+          <Comment name='kenji' />
           {/*{<ul>{this.createItems(this.props.items)}</ul>}*/}
         </div>
         <hr />
@@ -41,13 +41,7 @@ export default class CommentComponent extends React.Component {
 //
 
 let Comment = React.createClass({
- getDefaultProps(){
-   return {
-     //Comment.defaultPropsが先に呼ばれてrender()内では参照できなかった
-   };
- },
  componentDidMount(){
-  console.log();
  },
  itemName(item) {
   return `${item.name}:${item.count}`;
@@ -63,7 +57,7 @@ let Comment = React.createClass({
    let style = {
     fontSize: 14
    };
-   console.log(this.props);
+
    let childChild = React.createElement('span', null, 'わたしです');
    let child = React.createElement('div', {job: 'webdesign', style: {color: 'red' }}, childChild);
    let items = this.props.items.map(item => <span>{this.itemName(item)}</span>);
