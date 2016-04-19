@@ -6,6 +6,7 @@ import InputValidation from './InputValidation';
 import TodoComponent from './TodoComponent';
 import ReactCSSTransitionGroupExample from './ReactCSSTransitionGroupExample';
 import UpdateComponent from './UpdateComponent';
+import ImmutableComponent from './ImmutableComponent';
 // import ReactCSSTransitionGroupImageCarousel from
 // './ReactCSSTransitionGroupImageCarousel';
 import CreateFragmentComponent from './CreateFragmentComponent';
@@ -91,6 +92,7 @@ export default class ParentComponent extends React.Component {
             {...props} text={'override'}
           />
           <UpdateComponent />
+          <ImmutableComponent />
           <TodoComponent />
           <div>
             <FormParentComponent

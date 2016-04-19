@@ -35,7 +35,7 @@
     "gulp-nodemon": "^2.0.3",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
-    "immutable": "^3.7.6",
+    "immutable": "^3.8.0",
     "jquery": "^2.1.4",
     "marked": "^0.3.3",
     "npm": "^3.8.0",
