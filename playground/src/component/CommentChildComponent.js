@@ -8,7 +8,7 @@ export default class CommentChildComponent extends React.Component {
     let obj = {
       count : this.props.count
     };
-    this.props.func(obj);
+    // this.props.func(obj);
   }
   render() {
     return (

@@ -15,7 +15,7 @@ export default class AddList extends React.Component {
             <li>addを押してください。contが3の倍数だったらthreeの文字をだしclassに"three"を付与します</li>
             <li>内部的にはaddする度、親が状態管理しています。子のイベントを親がハンドリングしています</li>
           </ul>
-          <p className={this.props.count == 3 % 0 ? 'three' : ''}>{this.props.count}</p>
+          <p className={this.props.count == (this.props.count % 3 == 0) ? 'three' : ''}>{this.props.count}</p>
           <button onClick={this.addCount}>add</button>
         </div>
       );

@@ -1,6 +1,6 @@
 import  React from 'react';
 
-export default class Timer extends React.Component {
+export default class InputValidation extends React.Component {
     constructor(props){
       super(props);
       this.state = {
@@ -12,7 +12,7 @@ export default class Timer extends React.Component {
     componentDidMount(){
       console.log(this.refs.secondName);
       console.log(this.refs.secondName.props);
-      console.log(this.refs.secondName.props.children);//morita
+      // console.log(this.refs.secondName.props.children);//morita
       //props.children is nessesary eval,
       // some time return value has 'string'(like above),
       //'Array'(react Element) ,undefined
@@ -42,7 +42,7 @@ export default class Timer extends React.Component {
         this.chkInvalid();
     }
     chkInvalid(){
-      this.refs.result.value = this.state.valid ? '' : '5文字以上入力してください';
+      this.refs.result.value = this.state.valid ? 'ok' : '5文字以上入力してください';
       this.setState({
         result: this.refs.result.value
       });
@@ -53,11 +53,16 @@ export default class Timer extends React.Component {
           <div ref='secondName'>
             morita
           </div>
+          <hr />
           <h3>validation</h3>
+          <ul>
+            <li>5文字未満の入力でcheckボタン押下時、バリデーションが走ります</li>
+            <li>angularのような2wayBinding風です</li>
+          </ul>
           <p>uper 5 of string length appear valid text</p>
           <div ref='myTextDest'>{this.state.myText}</div>
           <input
-            type="text"
+            type='text'
             ref='inputText'
             onBlur={this.onBlur.bind(this)}
             onChange={this.onChange.bind(this)}/>
@@ -66,6 +71,7 @@ export default class Timer extends React.Component {
              {this.state.result}
            </div>
           <button onClick={this.chkInvalid.bind(this)}>check</button>
+          <hr />
         </div>
       );
     }

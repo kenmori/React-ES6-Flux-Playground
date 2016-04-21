@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import update from 'react-addons-update';
 export default class FormChildComponent extends React.Component {
   static propTypes = {
     title: React.PropTypes.string.isRequired,
@@ -28,12 +29,12 @@ export default class FormChildComponent extends React.Component {
     // this.stateの直接の子状態ではないのでOK
     // this.state.nestedObject.count = 0;
 
-    this.setState(function(state,props){
+    this.setState(function (state,props){
       return {
         count : state.count + 1
     };});
     //this way, you can call setState in same function
-    this.setState(function(state,props){
+    this.setState(function (state,props){
       return {
         count : state.count + 1
     };});
@@ -68,6 +69,11 @@ export default class FormChildComponent extends React.Component {
           onFocus={this._inputUserAction.bind(this, {action: 'onFocus'})} />
         <span>{this.state.action}</span>
         <hr />
+        <div>
+          <h3>React.addons</h3>
+          <h4>update</h4>
+          <div>{console.log(update, 'addons')}</div>
+        </div>
       </span>
     );
   }
