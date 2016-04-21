@@ -1,11 +1,11 @@
 {
-  "name": "react-tutorial-es6",
+  "name": "react-es6-playground",
   "version": "1.0.0",
-  "description": "",
+  "description": "react-es6-playground",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "moritakenji",
+  "author": "KenjiMorita",
   "license": "MIT",
   "babel": {
     "presets": [
@@ -42,6 +42,7 @@
     "react": "^15.0.1",
     "react-addons-create-fragment": "^15.0.1",
     "react-addons-css-transition-group": "^15.0.1",
+    "react-addons-perf": "^15.0.1",
     "react-addons-pure-render-mixin": "^15.0.1",
     "react-addons-shallow-compare": "^15.0.1",
     "react-addons-update": "^15.0.1",
@@ -49,5 +50,8 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "webpack": "^1.13.0"
+  },
+  "dependencies": {
+    "react-router": "^2.2.4"
   }
 }

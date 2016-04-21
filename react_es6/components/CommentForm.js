@@ -1,15 +1,16 @@
-import React from 'react'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 export default class CommentForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
-    var author = React.findDOMNode(this.refs.author).value;
+    const author = ReactDOM.findDOMNode(this.refs.author).value;
     console.log(author);
-    var text = React.findDOMNode(this.refs.text).value;
+    const text = ReactDOM.findDOMNode(this.refs.text).value;
     if(!text || !author) return;
     this.props.onCommentSubmit({author: author, text: text});
-    React.findDOMNode(this.refs.author).value = '';
-    React.findDOMNode(this.refs.text).value = '';
+    ReactDOM.findDOMNode(this.refs.author).value = '';
+    ReactDOM.findDOMNode(this.refs.text).value = '';
   }
   render() {
     return (
