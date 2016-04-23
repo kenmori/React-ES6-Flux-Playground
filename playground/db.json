@@ -2,25 +2,23 @@
   "users": [
     {
       "id": 1,
-      "name": "morita"
+      "name": "fafafa"
     },
     {
       "id": 2,
       "name": "kenji"
     },
     {
-      "name": "uhyohyo",
-      "id": 3
-    }
-  ],
-  "age": [
-    {
-      "id": 1,
-      "age": 27
+      "id": 3,
+      "name": "kenji"
     },
     {
-      "id": 2,
-      "age": 20
+      "id": 4,
+      "name": "kenji"
+    },
+    {
+      "id": 5,
+      "name": "kenji"
     }
   ]
 }
