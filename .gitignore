@@ -1,2 +1,4 @@
 node_modules/
 bower_components/
+playground/dist/app.js
+playground/dist/app.map.js
