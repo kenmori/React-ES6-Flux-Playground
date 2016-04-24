@@ -1,9 +1,9 @@
 // LICENSE : MIT
 "use strict";
-import React from "react"
-import ActionCreator from "./ActionCreator"
-import Store from "./Store"
-import EventEmitter from "./EventEmitter"
+import React from "react";
+import ActionCreator from "./ActionCreator";;
+import Store from "./Store";
+import EventEmitter from "./EventEmitter";
 
 var dispatcher = new EventEmitter();
 var action = new ActionCreator(dispatcher);

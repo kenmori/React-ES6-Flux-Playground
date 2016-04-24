@@ -1,5 +1,6 @@
 import React from 'react';
-import GrandsonComponent from './GrandsonComponent.js';
+import ReactDOM from 'react-dom';
+import GrandsonComponent from './GrandsonComponent';
 
 export default class ChildComponent extends React.Component {
   static DefaultProps = {

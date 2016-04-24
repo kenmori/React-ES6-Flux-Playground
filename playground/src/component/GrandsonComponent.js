@@ -1,15 +1,15 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 export default class GrandsonComponent extends React.Component {
   constructor(props){
     super(props);
-    console.log(props);
   }
-  defaultProps(){
-    return {
-      name: 'keiko'
-    };
-  }
+  // defaultProps(){
+  //   return {
+  //     name: 'keiko'
+  //   };
+  // }
   render (){
     return (
         <div>
