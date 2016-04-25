@@ -7,6 +7,7 @@ import TodoComponent from './TodoComponent';
 import ReactCSSTransitionGroupExample from './ReactCSSTransitionGroupExample';
 import UpdateComponent from './UpdateComponent';
 import ImmutableComponent from './ImmutableComponent';
+import TimerMixinComponent from './TimerMixinComponent';
 // import ReactCSSTransitionGroupImageCarousel from
 // './ReactCSSTransitionGroupImageCarousel';
 import CreateFragmentComponent from './CreateFragmentComponent';
@@ -87,6 +88,7 @@ export default class ParentComponent extends React.Component {
           <Element />
           <InputValidation />
           <ReactCSSTransitionGroupExample />
+          <TimerMixinComponent />
           {/*<ReactCSSTransitionGroupImageCarousel />*/}
           <CreateFragmentComponent
             {...props} text={'override'}
