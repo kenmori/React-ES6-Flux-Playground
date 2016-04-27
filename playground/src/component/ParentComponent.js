@@ -18,12 +18,14 @@ export default class ParentComponent extends React.Component {
     this.state = {
       name: 'morita',
       renderType: null,
-      id: 10
+      id: 11,
+      count: 0
     };
     // console.log(this._click.bind(this))
     // console.log(this._click)
     this._click = this._click.bind(this);
     this._changeStateClick = this._changeStateClick.bind(this);
+    this._upDateChildClickCount = this._upDateChildClickCount.bind(this);
   }
   componentWillMount() {
     console.log('componentWillMount');
@@ -34,16 +36,16 @@ export default class ParentComponent extends React.Component {
   componentWillReceiveProps(nextProps) {
     console.log('componentWillReciveProps');
   }
-  shouldComponentUpdate(nextProps, nextState, context) {
-    console.log(nextState);
-    console.log(this.state.name);
-    console.log(context);
-    if(nextState.name == 'kenji'){
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // shouldComponentUpdate(nextProps, nextState, context) {
+  //   console.log(nextState);
+  //   console.log(this.state.name);
+  //   console.log(context);
+  //   // if(nextState.name == 'kenji'){
+  //   //   return true;
+  //   // } else {
+  //   //   return false;
+  //   // }
+  // }
   componentWillUpdate(){
     console.log('componentWillUpdate');
   }
@@ -64,11 +66,14 @@ export default class ParentComponent extends React.Component {
       renderType: addCount
     });
   }
+  _upDateChildClickCount() {
+    this.setState({count: this.state.count + 1});
+  }
   render() {
       //オブジェクトをprops経由で渡す
       let user = {
-        id: 3,
-        age: 22
+        "id": 3,
+        "age": 22
       };
       //spread Attribute;
       let props = {};
@@ -102,10 +107,11 @@ export default class ParentComponent extends React.Component {
                func={this._changeStateClick}
              />
             <h2>I'm ParentComponent</h2>
-            <ChildComponent user={user} name={this.state.name} renderType={1} />
+            <ChildComponent user={user} func={this._upDateChildClickCount} count={this.state.count} name={this.state.name} renderType={1} />
             <hr />
             <ChildComponent user={user} name={this.state.name} renderType={2} />
           </div>
+
           <button onClick={this._click}>push</button>
         </div>
       );

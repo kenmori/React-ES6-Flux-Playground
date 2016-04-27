@@ -11,10 +11,10 @@ class Store extends EventEmitter{
       this.emit(CountConstants.DISPATCH_CHANGE_STATE);
     }
     addChangeStateListener(callback) {
-      this.on(CountConstants.DISPATCH_CHANGE_STATE, callback)
+      this.on(CountConstants.DISPATCH_CHANGE_STATE, callback);
     }
     removeChangeStateListener(callback){
-      this.removeListener(CountConstants.DISPATCH_CHANGE_STATE, callback)
+      this.removeListener(CountConstants.DISPATCH_CHANGE_STATE, callback);
     }
     countUp(){
       this.count = this.count + 1;
