@@ -1,10 +1,6 @@
-/**
- * reactコンポーネントの基本的な処理に紐づく定数値です。
- */
-export class BaseConstants {
-
+export default class BaseConstants {
 	constructor(prefix) {
-		// dispatcher key. AppDispatcherは各コンポーネントで共通のため、prefixで異なるキーを使用します。
+		console.log('prefix');
 		this.DISPATCH_INIT			= prefix + '_' + 'init';
 		this.DISPATCH_CHANGE_STATE	= prefix + '_' + 'change_state';
 		this.DISPATCH_GET_SUCCESS	= prefix + '_' + 'get_success';
