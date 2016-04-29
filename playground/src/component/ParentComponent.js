@@ -11,6 +11,7 @@ import TimerMixinComponent from './TimerMixinComponent';
 // import ReactCSSTransitionGroupImageCarousel from
 // './ReactCSSTransitionGroupImageCarousel';
 import CreateFragmentComponent from './CreateFragmentComponent';
+import TabComponent from './TabComponent';
 
 export default class ParentComponent extends React.Component {
   constructor(props) {
@@ -101,6 +102,7 @@ export default class ParentComponent extends React.Component {
           <UpdateComponent />
           <ImmutableComponent />
           <TodoComponent />
+          <TabComponent />
           <div>
             <FormParentComponent
               renderType={this.state.renderType}
