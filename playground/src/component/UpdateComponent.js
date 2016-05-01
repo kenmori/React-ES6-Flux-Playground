@@ -74,7 +74,7 @@ extends React.Component {
             <li>
               内部的に[1,2,3]に対して[4]をpushして出力しています
             </li>
-            <li>ボタンを押すと数が増えます。内部的にsetStateで更新していますが、値に対してupdate関数を事項しています</li>
+            <li>ボタンを押すと数が増えます。setStateで更新していますが、値に対してupdate関数を呼んでいます</li>
             <li>記述が簡略化されていることを確認してください</li>
           </ul>
           <p>{newArray}</p>
