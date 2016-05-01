@@ -1,24 +1,25 @@
 {
-  "users": [
+  "posts": [
     {
       "id": 1,
-      "name": "fafeeeeeeeafa"
+      "title": "json-server",
+      "author": "typicode"
     },
     {
-      "id": 2,
-      "name": "kenji"
+      "id": 2
     },
     {
-      "id": 3,
-      "name": "kenji"
-    },
-    {
-      "id": 4,
-      "name": "kenji"
-    },
-    {
-      "id": 5,
-      "name": "kenji"
+      "id": 3
     }
-  ]
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }
