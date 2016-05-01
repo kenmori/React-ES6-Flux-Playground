@@ -48,14 +48,14 @@ extends React.Component {
     });
     return (
       <div>
-        <h3>create Component by map</h3>
+        <h2>create Component by map</h2>
         <p>userの数だけ子componentを出力する</p>
         {users}
         <hr />
-        <h3>add user how use request,also update user</h3>
-        <p>userの数だけ子componentを出力する</p>
+        <h2>Ajax request for json-server</h2>
+        <p>To GET output to the ajax request by entering</p>
         {users}
-        <button onClick={this.onClickUpdate.bind(this)}>更新</button>
+        {/*<button onClick={this.onClickUpdate.bind(this)}>update</button>*/}
         名前: <input type='text' ref='text' />
         <button onClick={this.onClickPost.bind(this)}>追加</button>
         <hr />

@@ -33,7 +33,8 @@ export default class ReactCSSTransitionGroupExample extends React.Component {
     }.bind(this));
     return (
       <div>
-        <h3>ReactCSSTransitionGroup/Listの要素をanimationさせる</h3>
+        <h2>ReactCSSTransitionGroup</h2>
+        <p>to animation into element of list</p>
         <ul>
           <li>add押下、テキストを入力します</li>
           <li>追加された箇所をClickすると消えます</li>

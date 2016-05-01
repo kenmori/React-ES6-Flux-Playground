@@ -11,6 +11,8 @@ export default class AddList extends React.Component {
     render(){
       return (
         <div>
+          <h2>add count in child Component,
+            and then receive props to parent</h2>
           <ul>
             <li>addを押してください。contが3の倍数だったらthreeの文字をだしclassに"three"を付与します</li>
             <li>内部的にはaddする度、親が状態管理しています。子のイベントを親がハンドリングしています</li>

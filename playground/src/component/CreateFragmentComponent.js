@@ -50,7 +50,8 @@ export default class CreateFragmentComponent extends React.Component {
     };
     return (
       <div>
-        <h3>Keyed Fragments/use CreateFragment/spread Attribute</h3>
+        <h2>Keyed Fragments</h2>
+        <p>use CreateFragment/spread Attribute</p>
         <a href="https://facebook.github.io/react/docs/create-fragment.html">https://facebook.github.io/react/docs/create-fragment.html</a>
         <ul>
           <li>spreadAttributeによって親から渡されたcreateClassが渡っていることを確認してください</li>
