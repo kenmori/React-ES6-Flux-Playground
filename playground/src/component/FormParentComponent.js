@@ -79,7 +79,7 @@ export default class FormParentComponent extends React.Component {
                 >
               </div>*/}
               <AnswerRadioInput />
-              <button onClick={this.handleSaveClicked}>保存</button>
+              <button className='btn btn-primary' onClick={this.handleSaveClicked}>保存</button>
           </form>
           <FormChildComponent num={1} />
         </div>

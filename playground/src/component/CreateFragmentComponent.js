@@ -68,7 +68,7 @@ export default class CreateFragmentComponent extends React.Component {
         {/*this.props.children[{ key: keyname}];*/}
         <p>keyed処理されているDOM</p>
         <div>{keyedChildren}</div>
-        <button onClick={this.checkFragment}>click</button>
+        <button className='btn btn-primary' onClick={this.checkFragment}>click</button>
         <hr />
       </div>
     );

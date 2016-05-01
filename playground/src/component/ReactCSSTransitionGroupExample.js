@@ -41,7 +41,7 @@ export default class ReactCSSTransitionGroupExample extends React.Component {
           <li>出現時と削除時にanimationすることを確認してください</li>
           <li>transitionAppear="true"とすることで現存要素固定、addで追加される</li>
         </ul>
-        <button onClick={this._handleAdd}>add</button>
+        <button className='btn btn-primary' onClick={this._handleAdd}>add</button>
         <p>今日やること</p>
         {/*ReactCSSTransitionGroupはMountされたら動く*/}
         <ReactCSSTransitionGroup

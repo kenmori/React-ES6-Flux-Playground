@@ -57,7 +57,7 @@ extends React.Component {
         {users}
         {/*<button onClick={this.onClickUpdate.bind(this)}>update</button>*/}
         名前: <input type='text' ref='text' />
-        <button onClick={this.onClickPost.bind(this)}>追加</button>
+        <button className='btn btn-primary' onClick={this.onClickPost.bind(this)}>追加</button>
         <hr />
       </div>
     );

@@ -53,7 +53,7 @@ export default class FormChildComponent extends React.Component {
             <li>1つのメソッド内で2度setStateして同時に更新しています</li>
             <li>setStateにfunctionを渡すことで適切にsetStateしています</li>
           </ul>
-          <button onClick={this.increment}>onclick</button>
+          <button className='btn btn-primary' onClick={this.increment}>onclick</button>
           <span>{this.state.count}</span>
         </div>
         <hr />
