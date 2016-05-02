@@ -51,9 +51,6 @@ export default class FormParentComponent extends React.Component {
     });
   }
   render() {
-      {(()=>{
-
-      })();}
     return(
         <div>
           <h3>add count in child Component,
@@ -65,16 +62,16 @@ export default class FormParentComponent extends React.Component {
           <h3>Register form</h3>
           <CommentComponent data={this.props.data} />
           <form>
-              <label name="name" value="名前" />
+              <label name='name' value='名前' />
                 <input
                    onChange={this._getName}
-                   type="text"
-                   name="name"
-                   ref="name" />
+                   type='text'
+                   name='name'
+                   ref='name' />
                 <p>{this.state.name}</p>
-              <label name="age" value="生年月日" />
-                <input type="text" name="age" ref="age" />
-              <select name="country" id="contry">
+              <label name='age' value='生年月日' />
+                <input type='text' name='age' ref='age' />
+              <select name='country' id='contry'>
               </select>
               {/*<div
                 onDragOver={this.handleDragOver}
