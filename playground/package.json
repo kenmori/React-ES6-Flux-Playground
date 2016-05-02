@@ -53,6 +53,7 @@
     "webpack": "^1.13.0"
   },
   "dependencies": {
-    "react-router": "^2.2.4"
+    "react-router": "^2.2.4",
+    "superagent": "^1.8.3"
   }
 }

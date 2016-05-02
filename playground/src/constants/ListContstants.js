@@ -1,3 +1,3 @@
 import {BaseConstants} from 'BaseConstants';
 
-export var ListContstants = new BaseConstants('List');
+export const ListContstants = new BaseConstants('List');

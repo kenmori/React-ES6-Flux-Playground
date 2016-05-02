@@ -12,6 +12,7 @@ import TimerMixinComponent from './TimerMixinComponent';
 // './ReactCSSTransitionGroupImageCarousel';
 import CreateFragmentComponent from './CreateFragmentComponent';
 import TabComponent from './TabComponent';
+import TodoList from './TodoList';
 
 export default class ParentComponent extends React.Component {
   constructor(props) {
@@ -90,6 +91,7 @@ export default class ParentComponent extends React.Component {
             <p className='rate'>{`${map[this.state.id]}`}</p>
             { this.state.id == 10 ? <div>eee</div> : ''}
           </div>*/}
+          <TodoList />
           <listElementRoot />
           <Element />
           <InputValidation />

@@ -1,5 +1,4 @@
 // LICENSE : MIT
-"use strict";
 /*
     Simple EventEmitter
  */
@@ -17,9 +16,9 @@ export default class EventEmitter {
     }
 
     emit(type, data) {
-        var handlers = this._handlers[type] || [];
-        for (var i = 0; i < handlers.length; i++) {
-            var handler = handlers[i];
+        const handlers = this._handlers[type] || [];
+        for (const i = 0; i < handlers.length; i++) {
+            const handler = handlers[i];
             handler.call(this, data);
         }
     }

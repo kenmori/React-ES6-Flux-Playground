@@ -1,5 +1,4 @@
 // LICENSE : MIT
-"use strict";
 export default class ActionCreator {
     constructor(dispatcher) {
         this.dispatcher = dispatcher;
@@ -7,6 +6,6 @@ export default class ActionCreator {
 
     // "Emit" event ----> Store
     countUp(data) {
-        this.dispatcher.emit("countUp", data);
+        this.dispatcher.emit('countUp', data);
     }
 }

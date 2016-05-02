@@ -1,3 +1,3 @@
 import {Dispatcher} from 'flux';
 
-export var AppDispatcher = new Dispatcher();
+export const AppDispatcher = new Dispatcher();

@@ -1,12 +1,11 @@
 // LICENSE : MIT
-"use strict";
-import Emitter from "./EventEmitter"
+import Emitter from './EventEmitter';
 class Store extends Emitter {
     constructor(dispatcher) {
         super();
         this.count = 0;
         // <--- observe event.
-        dispatcher.on("countUp", this.onCountUp.bind(this));
+        dispatcher.on('countUp', this.onCountUp.bind(this));
     }
 
     getCount() {
@@ -18,8 +17,8 @@ class Store extends Emitter {
             return;
         }
         this.count = count;
-        // emit "CHANGE" ---> self
-        this.emit("CHANGE");
+        // emit 'CHANGE' ---> self
+        this.emit('CHANGE');
     }
 }
 export default Store;

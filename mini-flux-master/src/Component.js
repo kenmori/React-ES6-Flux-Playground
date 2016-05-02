@@ -1,20 +1,19 @@
 // LICENSE : MIT
-"use strict";
-import React from "react"
-import ActionCreator from "./ActionCreator"
-import Store from "./Store"
-import EventEmitter from "./EventEmitter"
+import React from 'react';
+import ActionCreator from './ActionCreator';
+import Store from './Store';
+import EventEmitter from './EventEmitter';
 
-var dispatcher = new EventEmitter();
-var action = new ActionCreator(dispatcher);
-var store = new Store(dispatcher);
+const dispatcher = new EventEmitter();
+const action = new ActionCreator(dispatcher);
+const store = new Store(dispatcher);
 
 export default class Component extends React.Component {
     constructor(props) {
         super(props);
         this.state = {count: store.getCount()};
         // <- Observe store's change
-        store.on("CHANGE", () => {
+        store.on('CHANGE', () => {
             this._onChange();
         });
     }
