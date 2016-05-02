@@ -81,7 +81,7 @@ extends React.Component {
           <p>{newCollection}</p>
           {/*<p>{newObj2}</p>*/}
           <p>{this.state.count}</p>
-          <button onClick={this._addCount}>update</button>
+          <button className='btn btn-primary' onClick={this._addCount}>update</button>
             <ul>
               <li>入力をwatchしてsetStateしています</li>
               <li>記述が簡略化されていることを確認してください</li>
@@ -103,7 +103,7 @@ extends React.Component {
             </ul>
             <p>ArrayをsetStateで更新する場合</p>
             <div>{this.state.passengers}</div>
-            <button onClick={this._addPassenger}>Array値を安全にsetStateする</button>
+            <button className='btn btn-primary' onClick={this._addPassenger}>Array値を安全にsetStateする</button>
             {/*<p>ObjectをsetStateで更新する場合</p>
             <div>{this.state.ticket}</div>
             <button key={this.state.ticket} onClick={this._addTicket.bind(key, event);}>object値を安全にsetStateする</button>*/}

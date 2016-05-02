@@ -13,7 +13,7 @@ export default class CommentChildComponent extends React.Component {
   render() {
     return (
         <div>
-          <button onClick={this.getCount}>I'm ComentChildComponent</button>
+          <button className='btn btn-primary' onClick={this.getCount}>I'm ComentChildComponent</button>
             { this.props.count % 2 == 0 && this.props.count != 0 ? <span>2の倍数です</span> : ''}
         </div>
     );

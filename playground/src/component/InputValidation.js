@@ -70,7 +70,7 @@ export default class InputValidation extends React.Component {
              className={this.state.vaild ? '' : 'red'}>
              {this.state.result}
            </div>
-          <button onClick={this.chkInvalid.bind(this)}>check</button>
+          <button className='btn btn-primary' onClick={this.chkInvalid.bind(this)}>check</button>
           <hr />
         </div>
       );

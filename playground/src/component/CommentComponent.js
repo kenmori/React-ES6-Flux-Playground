@@ -26,7 +26,8 @@ export default class CommentComponent extends React.Component {
           {/*{<ul>{this.createItems(this.props.items)}</ul>}*/}
         </div>
         <hr />
-        <h3>isShowComponentがtrueの場合コンポーネントCommentChildComponent自体返しfalseの場合null返しています</h3>
+        <h2>【WIP】isShowComponentがtrueの場合コンポーネント
+          CommentChildComponent自体返しfalseの場合null返しています</h2>
         <div>
           {isShowComponent ? <CommentChildComponent /> : null}
         </div>
