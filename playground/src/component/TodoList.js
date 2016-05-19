@@ -9,54 +9,69 @@ extends React.Component {
       super(props);
 
       this.state = {
-        title: []
+        users: []
       };
   }
   componentDidMount() {
-
-  }
-  onClickGet(){
-    const title = request
-    .get('http://localhost:3004/posts/', function (error, res){
-      return res.body.map(function (elem, i){
-          elem.title;
+    let that = this;
+    request.get('http://localhost:3004/users/',function (error,res){
+      that.setState({
+        users: res.body
       });
     });
-    this.setState({
-      title : title
-    });
   }
+  onClickUpdate(){
+    let that = this;
+    request.get('http://localhost:3004/users/',function (error,res){
+      that.setState({
+        users: res.body
+      });
+    });
+  };
   onClickPost(){
-    request.post('http://localhost:3004/posts/', function (error, res){
-
+    const that = this;
+    const text = this.refs.text.value;
+    console.log(text);
+    request.post('http://localhost:3004/users/')
+    .send({
+      id : this.state.users.length + 1,
+      name: text
+    })
+    .end(function(error, res){
+        console.log(res.body);
     });
   }
   render(){
+    console.log(this.state.users);
+    const users = this.state.users.map(function (user){
+        return <User id={user.id} name={user.name} />;
+    });
     return (
       <div>
-        <h3>TodoList</h3>
-
-        <a onClick={this.onClickGet.bind(this)}>click</a>
-        <a onClick={this.onClickPost.bind(this)}>click</a>
+        <h3>create Component by map</h3>
+        <p>userの数だけ子componentを出力する</p>
+        {users}
+        <hr />
+        <h3>add user how use request,also update user</h3>
+        <p>userの数だけ子componentを出力する</p>
+        {users}
+        <button onClick={this.onClickUpdate.bind(this)}>更新</button>
+        名前: <input type='text' ref='text' />
+        <button onClick={this.onClickPost.bind(this)}>追加</button>
         <hr />
       </div>
     );
   }
 };
 
-//TODO: via to ActionCreator
-// const lists = React.createClass({
-//   render: function () {
-//     let list = [];
-//     console.log("hogehoge");
-//     request.get('http://localhost:3004/posts')
-//     .end(function (error, res){
-//       list = res.map(function (ele){
-//          <li>{ele.title}</li>;
-//       });
-//     });
-//     return (
-//       <li>{list}</li>
-//     );
-//   }
-// });
+const User = React.createClass({
+  render : function(){
+    return (
+      <div>
+        <div>
+          id: {this.props.id}<br />
+          name: {this.props.name}</div>
+      </div>
+    );
+  }
+});
