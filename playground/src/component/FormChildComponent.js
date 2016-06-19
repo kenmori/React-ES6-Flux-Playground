@@ -48,17 +48,17 @@ export default class FormChildComponent extends React.Component {
     return (
       <span>
         <div>
-          <h3>同時更新,setStateに関数渡す</h3>
+          <h2>同時更新,setStateに関数渡す</h2>
           <ul>
             <li>1つのメソッド内で2度setStateして同時に更新しています</li>
             <li>setStateにfunctionを渡すことで適切にsetStateしています</li>
           </ul>
-          <button onClick={this.increment}>onclick</button>
+          <button className='btn btn-primary' onClick={this.increment}>onclick</button>
           <span>{this.state.count}</span>
         </div>
         <hr />
         <div>
-          <h3>1つのメソッドで2つのイベントを管理</h3>
+          <h2>Manage two events in one of the methods</h2>
           <ul>
             <li>2つのユーザーアクションに対して1メソッドで管理しています</li>
             <li>下のonFocus,onBlur時にstateを変更しています</li>
@@ -70,7 +70,7 @@ export default class FormChildComponent extends React.Component {
         <span>{this.state.action}</span>
         <hr />
         <div>
-          <h3>React.addons</h3>
+          <h2>React.addons</h2>
           <h4>update</h4>
           <div>{console.log(update, 'addons')}</div>
         </div>

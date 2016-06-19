@@ -1,34 +1,45 @@
 {
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
   "users": [
     {
       "id": 1,
-      "name": "fafafa",
-      "message": "hi!!",
-      "url": "https://github.com/kenmori"
+      "name": "foo"
     },
     {
       "id": 2,
-      "name": "kenji",
-      "message": "hi!hi!",
-      "url": "https://github.com/kenmori/React-ES6-Flux-Playground"
+      "name": "bar"
     },
     {
       "id": 3,
-      "name": "kenji",
-      "message": "hi!hi!hihi!!",
-      "url": "https://github.com/kenmori/Angular2_TypeScript"
+      "name": "ee"
     },
     {
       "id": 4,
-      "name": "kenji",
-      "message": "hi!hi!hi!hihi!",
-      "url": "https://github.com/kenmori/dotfiles"
+      "name": "eeee"
     },
     {
       "id": 5,
-      "name": "kenjin",
-      "message": "hei!!",
-      "url": "https://github.com/kenmori/javascript"
+      "name": "oooo"
+    },
+    {
+      "id": 6,
+      "name": "fafafa"
     }
   ]
 }

@@ -51,30 +51,25 @@ export default class FormParentComponent extends React.Component {
     });
   }
   render() {
-      {(()=>{
-
-      })();}
     return(
         <div>
-          <h3>add count in child Component,
-            and then receive props to parent</h3>
           <AddList
             addCountToParent={this.addCountFromParent}
             count={this.state.count} />
           <hr />
-          <h3>Register form</h3>
+          <h2>【WIP】Register form</h2>
           <CommentComponent data={this.props.data} />
           <form>
-              <label name="name" value="名前" />
+              <label name='name' value='名前' />
                 <input
                    onChange={this._getName}
-                   type="text"
-                   name="name"
-                   ref="name" />
+                   type='text'
+                   name='name'
+                   ref='name' />
                 <p>{this.state.name}</p>
-              <label name="age" value="生年月日" />
-                <input type="text" name="age" ref="age" />
-              <select name="country" id="contry">
+              <label name='age' value='生年月日' />
+                <input type='text' name='age' ref='age' />
+              <select name='country' id='contry'>
               </select>
               {/*<div
                 onDragOver={this.handleDragOver}
@@ -84,7 +79,7 @@ export default class FormParentComponent extends React.Component {
                 >
               </div>*/}
               <AnswerRadioInput />
-              <button onClick={this.handleSaveClicked}>保存</button>
+              <button className='btn btn-primary' onClick={this.handleSaveClicked}>保存</button>
           </form>
           <FormChildComponent num={1} />
         </div>

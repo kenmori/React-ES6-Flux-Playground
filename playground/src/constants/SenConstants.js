@@ -1,3 +1,3 @@
-// import BaseConstants from './BaseConstants';
+import BaseConstants from './BaseConstants';
 
-// export var SenConstants = new BaseConstants('sen');
+export var SenConstants = new BaseConstants('sen');

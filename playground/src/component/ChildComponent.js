@@ -28,7 +28,7 @@ export default class ChildComponent extends React.Component {
       <div>
         <h3>when you click, emmit</h3>
         <div>{this.props.count}</div>
-        <button onClick={this._getCountApi}>click!</button>
+        <button className='btn btn-primary' onClick={this._getCountApi}>click!</button>
         <hr />
         <h3>I'm ChildrenComponent{this.props.renderType}</h3>
           <p>renderType is {this.props.renderType}</p>

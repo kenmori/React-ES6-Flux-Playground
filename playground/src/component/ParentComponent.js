@@ -8,11 +8,11 @@ import ReactCSSTransitionGroupExample from './ReactCSSTransitionGroupExample';
 import UpdateComponent from './UpdateComponent';
 import ImmutableComponent from './ImmutableComponent';
 import TimerMixinComponent from './TimerMixinComponent';
-// import SenComponent from './SenComponent';
 // import ReactCSSTransitionGroupImageCarousel from
 // './ReactCSSTransitionGroupImageCarousel';
 import CreateFragmentComponent from './CreateFragmentComponent';
 import TabComponent from './TabComponent';
+import TodoList from './TodoList';
 
 export default class ParentComponent extends React.Component {
   constructor(props) {
@@ -91,7 +91,7 @@ export default class ParentComponent extends React.Component {
             <p className='rate'>{`${map[this.state.id]}`}</p>
             { this.state.id == 10 ? <div>eee</div> : ''}
           </div>*/}
-          {/*<SenComponent condition={10} url={'http://localhost:800'} senPosition={'わたし'}/>*/}
+          <TodoList />
           <listElementRoot />
           <Element />
           <InputValidation />
@@ -116,7 +116,7 @@ export default class ParentComponent extends React.Component {
             <ChildComponent user={user} name={this.state.name} renderType={2} />
           </div>
 
-          <button onClick={this._click}>push</button>
+          <button className='btn btn-primary' onClick={this._click}>push</button>
         </div>
       );
     }

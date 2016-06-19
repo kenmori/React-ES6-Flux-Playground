@@ -74,14 +74,14 @@ extends React.Component {
             <li>
               内部的に[1,2,3]に対して[4]をpushして出力しています
             </li>
-            <li>ボタンを押すと数が増えます。内部的にsetStateで更新していますが、値に対してupdate関数を事項しています</li>
+            <li>ボタンを押すと数が増えます。setStateで更新していますが、値に対してupdate関数を呼んでいます</li>
             <li>記述が簡略化されていることを確認してください</li>
           </ul>
           <p>{newArray}</p>
           <p>{newCollection}</p>
           {/*<p>{newObj2}</p>*/}
           <p>{this.state.count}</p>
-          <button onClick={this._addCount}>update</button>
+          <button className='btn btn-primary' onClick={this._addCount}>update</button>
             <ul>
               <li>入力をwatchしてsetStateしています</li>
               <li>記述が簡略化されていることを確認してください</li>
@@ -103,7 +103,7 @@ extends React.Component {
             </ul>
             <p>ArrayをsetStateで更新する場合</p>
             <div>{this.state.passengers}</div>
-            <button onClick={this._addPassenger}>Array値を安全にsetStateする</button>
+            <button className='btn btn-primary' onClick={this._addPassenger}>Array値を安全にsetStateする</button>
             {/*<p>ObjectをsetStateで更新する場合</p>
             <div>{this.state.ticket}</div>
             <button key={this.state.ticket} onClick={this._addTicket.bind(key, event);}>object値を安全にsetStateする</button>*/}

@@ -9,12 +9,13 @@ export  class SenComponent extends React.Component {
       senPosition: 'message',
       condition: 10,
       url: 'http://localhost'
-    };
+    }
     constructor(props) {
         super(props);
+        console.log("sennn!!", props);
         this._getState = this._getState.bind(this);
         this._changeState = this._changeState.bind(this);
-    };
+    }
 
     componentWillMount() {
 
