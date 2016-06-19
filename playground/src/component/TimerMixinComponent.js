@@ -11,7 +11,7 @@ extends React.Component {
   render(){
     return (
       <div>
-          <h3>Timerを使ったmixin</h3>
+          <h2>use mixin for Timer</h2>
           Timer!!!!
           <div></div>
           <hr />
@@ -21,7 +21,7 @@ extends React.Component {
 
 let Mixin = React.createClass({
   mixins: [PureRenderMixin],
-  render: function(){
+  render: function (){
     return (
         <div className={this.props.className}>foo</div>
     );

@@ -116,7 +116,7 @@ export default class ParentComponent extends React.Component {
             <ChildComponent user={user} name={this.state.name} renderType={2} />
           </div>
 
-          <button onClick={this._click}>push</button>
+          <button className='btn btn-primary' onClick={this._click}>push</button>
         </div>
       );
     }
