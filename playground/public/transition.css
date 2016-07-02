@@ -43,3 +43,15 @@
   opacity: 1;
   transition: opacity .5s ease-in;
 }
+h2 {
+  font-size: 18px!important;
+}
+
+div#content {
+  width: 100%;
+  overflow: hidden;
+}
+body.container {
+  word-wrap: break-word;
+  box-sizing: border-box;
+}

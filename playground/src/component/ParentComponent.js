@@ -1,5 +1,6 @@
 import React from 'react';
 import reactDOM from 'react-dom';
+import Modal from 'react-modal';
 import ChildComponent from './ChildComponent';
 import FormParentComponent from './FormParentComponent';
 import InputValidation from './InputValidation';
@@ -8,12 +9,15 @@ import ReactCSSTransitionGroupExample from './ReactCSSTransitionGroupExample';
 import UpdateComponent from './UpdateComponent';
 import ImmutableComponent from './ImmutableComponent';
 import TimerMixinComponent from './TimerMixinComponent';
+import ModalComponent from './ModalComponent';
 // import ReactCSSTransitionGroupImageCarousel from
 // './ReactCSSTransitionGroupImageCarousel';
 import CreateFragmentComponent from './CreateFragmentComponent';
 import TabComponent from './TabComponent';
 import TodoList from './TodoList';
 
+const appElement = document.getElementById('content');
+Modal.setAppElement(appElement);
 export default class ParentComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -21,13 +25,16 @@ export default class ParentComponent extends React.Component {
       name: 'morita',
       renderType: null,
       id: 11,
-      count: 0
+      count: 0,
+       modalIsOpen: false
     };
     // console.log(this._click.bind(this))
     // console.log(this._click)
     this._click = this._click.bind(this);
     this._changeStateClick = this._changeStateClick.bind(this);
     this._upDateChildClickCount = this._upDateChildClickCount.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
   componentWillMount() {
     console.log('componentWillMount');
@@ -71,6 +78,13 @@ export default class ParentComponent extends React.Component {
   _upDateChildClickCount() {
     this.setState({count: this.state.count + 1});
   }
+    openModal() {
+        this.setState({modalIsOpen: true});
+    }
+
+    closeModal() {
+        this.setState({modalIsOpen: false});
+    }
 render() {
   //オブジェクトをprops経由で渡す
   let user = {
@@ -84,7 +98,23 @@ render() {
   props.rightChildren=<Right />;
   props.leftChildren=<Left />;
   // const map = ['待機中','鑑定中', '予約受付中', '時間外'];
-  return  (
+    //modalSetting
+    const customStyles = {
+        overlay : {
+            background: 'rgba(0,0,0, .4)'
+        },
+        content : {
+            top                   : '50%',
+            left                  : '50%',
+            right                 : 'auto',
+            bottom                : 'auto',
+            marginRight           : '-50%',
+            transform             : 'translate(-50%, -50%)',
+            width                 : '72%'
+        }
+    };
+
+    return  (
       <div>
       {/*<div className={`ratewrap${this.state.id} iii`}>
        <p className='rate'>{`${map[this.state.id]}`}</p>
@@ -94,7 +124,29 @@ render() {
       <ReactCSSTransitionGroupExample />
       <UpdateComponent />
       <InputValidation />
+
+            <h2 id="modal">react-modal</h2>
+        <button  className='btn btn-primary' onClick={this.openModal}>Open Modal</button>
+      <Modal
+        isOpen={this.state.modalIsOpen}
+        onAfterOpen={this.afterOpenModal}
+        onRequestClose={this.closeModal}
+        shouldCloseOnOverlayClick={true}
+        style={customStyles} >
+            <h2 ref="subtitle">Hello</h2>
+      <button className='btn btn-primary' onClick={this.closeModal}>close</button>
+      <div>I am a modal</div>
+          <form>
+          <input />
+          <button>tab navigation</button>
+          <button>stays</button>
+          <button>inside</button>
+          <button>the modal</button>
+            <p>//github.com/reactjs/react-modal</p>
+          </form>
+        </Modal>
       <hr />
+        <FormParentComponent {...props} text={'override'} renderType={this.state.renderType} />
       <h2>ここから下調整中(2016/0702)</h2>
       <h2>I'm ParentComponent</h2>
       <ChildComponent user={user} func={this._upDateChildClickCount} count={this.state.count} name={this.state.name} renderType={1} />
@@ -104,7 +156,6 @@ render() {
       <button className='btn btn-primary' onClick={this._click}>push</button>
 
       <ImmutableComponent />
-      <FormParentComponent {...props} text={'override'} renderType={this.state.renderType} />
       <listElementRoot />
       <Element />
       <TodoList />

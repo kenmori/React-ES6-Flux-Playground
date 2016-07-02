@@ -54,7 +54,7 @@ export default class InputValidation extends React.Component {
             morita
           </div>
           <hr />
-          <h3>validation</h3>
+          <h2>validation</h2>
           <ul>
             <li>5文字未満の入力でcheckボタン押下時、バリデーションが走ります</li>
             <li>angularのような2wayBinding風です</li>
