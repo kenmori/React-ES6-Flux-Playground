@@ -71,58 +71,56 @@ export default class ParentComponent extends React.Component {
   _upDateChildClickCount() {
     this.setState({count: this.state.count + 1});
   }
-  render() {
-      //オブジェクトをprops経由で渡す
-      let user = {
-        "id": 3,
-        "age": 22
-      };
-      //spread Attribute;
-      let props = {};
-      props.swapped=true;
-      props.text='default';
-      props.rightChildren=<Right />;
-      props.leftChildren=<Left />;
-      // const map = ['待機中','鑑定中', '予約受付中', '時間外'];
-
-      return  (
-        <div>
-          {/*<div className={`ratewrap${this.state.id} iii`}>
-            <p className='rate'>{`${map[this.state.id]}`}</p>
-            { this.state.id == 10 ? <div>eee</div> : ''}
-          </div>*/}
-          <TodoList />
-          <listElementRoot />
-          <Element />
-          <InputValidation />
-          <ReactCSSTransitionGroupExample />
-          <TimerMixinComponent />
-          {/*<ReactCSSTransitionGroupImageCarousel />*/}
-          <CreateFragmentComponent
-            {...props} text={'override'}
-          />
-          <UpdateComponent />
-          <ImmutableComponent />
-          <TodoComponent />
-          <TabComponent />
-          <div>
-            <FormParentComponent
-              renderType={this.state.renderType}
-               func={this._changeStateClick}
-             />
-            <h2>I'm ParentComponent</h2>
-            <ChildComponent user={user} func={this._upDateChildClickCount} count={this.state.count} name={this.state.name} renderType={1} />
-            <hr />
-            <ChildComponent user={user} name={this.state.name} renderType={2} />
-          </div>
-
-          <button className='btn btn-primary' onClick={this._click}>push</button>
-        </div>
-      );
-    }
+render() {
+  //オブジェクトをprops経由で渡す
+  let user = {
+    "id": 3,
+    "age": 22
   };
+  //spread Attribute;
+  let props = {};
+  props.swapped=true;
+  props.text='default';
+  props.rightChildren=<Right />;
+  props.leftChildren=<Left />;
+  // const map = ['待機中','鑑定中', '予約受付中', '時間外'];
+  return  (
+      <div>
+      {/*<div className={`ratewrap${this.state.id} iii`}>
+       <p className='rate'>{`${map[this.state.id]}`}</p>
+       { this.state.id == 10 ? <div>eee</div> : ''}
+       </div>*/}
+      <TabComponent />
+      <ReactCSSTransitionGroupExample />
+      <UpdateComponent />
+      <InputValidation />
+      <hr />
+      <h2>ここから下調整中(2016/0702)</h2>
+      <h2>I'm ParentComponent</h2>
+      <ChildComponent user={user} func={this._upDateChildClickCount} count={this.state.count} name={this.state.name} renderType={1} />
+      <hr />
+      <ChildComponent user={user} name={this.state.name} renderType={2} />
 
-  var contacts = [
+      <button className='btn btn-primary' onClick={this._click}>push</button>
+
+      <ImmutableComponent />
+      <FormParentComponent {...props} text={'override'} renderType={this.state.renderType} />
+      <listElementRoot />
+      <Element />
+      <TodoList />
+      <TimerMixinComponent />
+      <TodoComponent />
+      {/*<ReactCSSTransitionGroupImageCarousel />*/}
+      <CreateFragmentComponent func={this._changeStateClick} />
+</div>
+
+);
+}
+}
+
+
+
+var contacts = [
     {key: 1, name: "James Nelson", email: "james@jamesknelson.com"},
     {key: 2, name: "kenji", email: "kenji@fafafafa.com"},
     {key: 3, name: "koiufa Nelson", email: "koifa@jamesknelson.com"},

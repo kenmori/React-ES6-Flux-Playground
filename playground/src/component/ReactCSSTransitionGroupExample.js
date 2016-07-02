@@ -11,7 +11,7 @@ export default class ReactCSSTransitionGroupExample extends React.Component {
       };
   }
   _handleAdd = ()=> {
-    let newItems = this.state.items.concat([prompt('inputtext!')]);
+    let newItems = this.state.items.concat([prompt('今日やりたいことを入力してください')]);
     this.setState({
       items: newItems
     });

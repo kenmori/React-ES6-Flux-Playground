@@ -88,7 +88,7 @@ extends React.Component {
             </ul>
           <p>{this.state.text}</p>
           <input type='text' placeholder="wite some!" onChange={this._onChange} />
-          <p>addonを使わないやり方</p>
+          <h3>addonを使わないやり方</h3>
           <a href="https://medium.com/pro-react/a-brief-talk-about-immutability-and-react-s-helpers-70919ab8ae7c#.9a2mvlkux">ref (React: A (very brief) talk about immutability)</a>
             <ul>
               <li>stateのプロパティに直接代入して更新しない</li>
@@ -101,7 +101,7 @@ extends React.Component {
                 その後のsetState呼び出しで潜在的な危険をはらむことになる</li>
               <li>新しい配列を作りる非破壊メソッドを使ってコピーする必要がある</li>
             </ul>
-            <p>ArrayをsetStateで更新する場合</p>
+            <h3>ArrayをsetStateで更新する場合</h3>
             <div>{this.state.passengers}</div>
             <button className='btn btn-primary' onClick={this._addPassenger}>Array値を安全にsetStateする</button>
             {/*<p>ObjectをsetStateで更新する場合</p>
