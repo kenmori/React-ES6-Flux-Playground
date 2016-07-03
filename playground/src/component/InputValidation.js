@@ -62,6 +62,7 @@ export default class InputValidation extends React.Component {
           <p>uper 5 of string length appear valid text</p>
           <div ref='myTextDest'>{this.state.myText}</div>
           <input
+            className='form-control m10'
             type='text'
             ref='inputText'
             onBlur={this.onBlur.bind(this)}

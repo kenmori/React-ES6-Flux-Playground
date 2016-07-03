@@ -87,7 +87,7 @@ extends React.Component {
               <li>記述が簡略化されていることを確認してください</li>
             </ul>
           <p>{this.state.text}</p>
-          <input type='text' placeholder="wite some!" onChange={this._onChange} />
+          <input className='form-control' type='text' placeholder="wite some!" onChange={this._onChange} />
           <h3>addonを使わないやり方</h3>
           <a href="https://medium.com/pro-react/a-brief-talk-about-immutability-and-react-s-helpers-70919ab8ae7c#.9a2mvlkux">ref (React: A (very brief) talk about immutability)</a>
             <ul>

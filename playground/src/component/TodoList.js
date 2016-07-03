@@ -56,7 +56,7 @@ extends React.Component {
         <p>To GET output to the ajax request by entering</p>
         {users}
         {/*<button onClick={this.onClickUpdate.bind(this)}>update</button>*/}
-        名前: <input type='text' ref='text' />
+        名前: <input className='form-control' type='text' ref='text' />
         <button className='btn btn-primary' onClick={this.onClickPost.bind(this)}>追加</button>
         <hr />
       </div>

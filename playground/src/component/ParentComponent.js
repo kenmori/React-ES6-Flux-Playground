@@ -1,6 +1,7 @@
 import React from 'react';
-import reactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import { Router, Route, Link, browserHistory } from 'react-router';
 import ChildComponent from './ChildComponent';
 import FormParentComponent from './FormParentComponent';
 import InputValidation from './InputValidation';
@@ -16,8 +17,11 @@ import CreateFragmentComponent from './CreateFragmentComponent';
 import TabComponent from './TabComponent';
 import TodoList from './TodoList';
 
+
+// react-modal setting
 const appElement = document.getElementById('content');
 Modal.setAppElement(appElement);
+
 export default class ParentComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +42,7 @@ export default class ParentComponent extends React.Component {
   }
   componentWillMount() {
     console.log('componentWillMount');
-  }
+      ParentComponent}
   componentDidMount() {
     console.log('componentDidMount');
   }
@@ -56,13 +60,13 @@ export default class ParentComponent extends React.Component {
   //   // }
   // }
   componentWillUpdate(){
-    console.log('componentWillUpdate');
+    console.log('parentComponent! componentWillUpdate');
   }
   componentDidUpdate(){
-    console.log('componentDidUpdate');
+    console.log('parentComponent! componentDidUpdate');
   }
   componentWiiUnmount() {
-    console.log('componentWiiUnmount');
+    console.log('parentComponent! componentWiiUnmount');
   }
   _click() {
     this.setState({
@@ -85,19 +89,19 @@ export default class ParentComponent extends React.Component {
     closeModal() {
         this.setState({modalIsOpen: false});
     }
-render() {
-  //オブジェクトをprops経由で渡す
-  let user = {
-    "id": 3,
-    "age": 22
-  };
-  //spread Attribute;
-  let props = {};
-  props.swapped=true;
-  props.text='default';
-  props.rightChildren=<Right />;
-  props.leftChildren=<Left />;
-  // const map = ['待機中','鑑定中', '予約受付中', '時間外'];
+    render() {
+    //オブジェクトをprops経由で渡す
+    let user = {
+        "id": 3,
+        "age": 22
+    };
+    //spread Attribute;
+    let props = {};
+    props.swapped=true;
+    props.text='default';
+    props.rightChildren=<Right />;
+    props.leftChildren=<Left />;
+    // const map = ['待機中','鑑定中', '予約受付中', '時間外'];
     //modalSetting
     const customStyles = {
         overlay : {
@@ -115,60 +119,61 @@ render() {
     };
 
     return  (
-      <div>
-      {/*<div className={`ratewrap${this.state.id} iii`}>
-       <p className='rate'>{`${map[this.state.id]}`}</p>
-       { this.state.id == 10 ? <div>eee</div> : ''}
-       </div>*/}
-      <TabComponent />
-      <ReactCSSTransitionGroupExample />
-      <UpdateComponent />
-      <InputValidation />
-
-            <h2 id="modal">react-modal</h2>
+        <div>
+        {/*<div className={`ratewrap${this.state.id} iii`}>
+        <p className='rate'>{`${map[this.state.id]}`}</p>
+        { this.state.id == 10 ? <div>eee</div> : ''}
+        </div>*/}
+        <TabComponent />
+        <ReactCSSTransitionGroupExample />
+        <UpdateComponent />
+        <InputValidation />
+        <h2 id="modal">react-modal</h2>
+        <ul>
+            <li>ボタンを押すとモーダルが現れます</li>
+            <li><a href="http://kenjimorita.jp/react-react-modal/">こちら</a>で説明しています</li>
+        </ul>
         <button  className='btn btn-primary' onClick={this.openModal}>Open Modal</button>
-      <Modal
-        isOpen={this.state.modalIsOpen}
-        onAfterOpen={this.afterOpenModal}
-        onRequestClose={this.closeModal}
-        shouldCloseOnOverlayClick={true}
-        style={customStyles} >
-            <h2 ref="subtitle">Hello</h2>
-      <button className='btn btn-primary' onClick={this.closeModal}>close</button>
-      <div>I am a modal</div>
-          <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-            <p>//github.com/reactjs/react-modal</p>
-          </form>
+        <Modal
+            isOpen={this.state.modalIsOpen}
+            onAfterOpen={this.afterOpenModal}
+            onRequestClose={this.closeModal}
+            shouldCloseOnOverlayClick={true}
+            style={customStyles} >
+                <h2 ref="subtitle">Hello</h2>
+                <button className='btn btn-primary' onClick={this.closeModal}>close</button>
+                <div>I am a modal</div>
+                <form>
+                <input />
+                <button>tab navigation</button>
+                <button>stays</button>
+                <button>inside</button>
+                <button>the modal</button>
+                <p>//github.com/reactjs/react-modal</p>
+                </form>
         </Modal>
-      <hr />
+        <hr />
         <FormParentComponent {...props} text={'override'} renderType={this.state.renderType} />
       
-      <h2>I'm ParentComponent</h2>
-      <ChildComponent user={user} func={this._upDateChildClickCount} count={this.state.count} name={this.state.name} renderType={1} />
-      <hr />
-      <ChildComponent user={user} name={this.state.name} renderType={2} />
+        <h2>I'm ParentComponent</h2>
+        <ChildComponent user={user} func={this._upDateChildClickCount} count={this.state.count} name={this.state.name} renderType={1} />
+        <hr />
+        <ChildComponent user={user} name={this.state.name} renderType={2} />
 
-      <button className='btn btn-primary' onClick={this._click}>push</button>
+        <button className='btn btn-primary' onClick={this._click}>push</button>
+        <ImmutableComponent />
+        <listElementRoot />
+        <Element />
+        <TodoList />
+        <TimerMixinComponent />
+        <TodoComponent />
+        {/*<ReactCSSTransitionGroupImageCarousel />*/}
+        <CreateFragmentComponent func={this._changeStateClick} />
+        </div>
 
-      <ImmutableComponent />
-      <listElementRoot />
-      <Element />
-      <TodoList />
-      <TimerMixinComponent />
-      <TodoComponent />
-      {/*<ReactCSSTransitionGroupImageCarousel />*/}
-      <CreateFragmentComponent func={this._changeStateClick} />
-</div>
-
-);
+        );
+    }
 }
-}
-
 
 
 var contacts = [
