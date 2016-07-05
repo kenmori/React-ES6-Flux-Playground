@@ -22,12 +22,14 @@ sample
 
 ```sh
 npm install
+npm i -g json-server
 ```
 
 ### Start server
 
 ```sh
-gulp
+gulp (local)
+json-server --watch db.json (localDB)
 ```
 
 ####
@@ -36,3 +38,8 @@ I think that it is unnecessary, there is a file of around Flux as an example,
 
 #### local server start
 ```Server started: http://localhost:3000/```
+```json-server --watch db.json```
+
+
+see json-server
+http://kenjimorita.jp/json/
