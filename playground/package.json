@@ -48,6 +48,7 @@
     "react-addons-shallow-compare": "^15.0.1",
     "react-addons-update": "^15.0.1",
     "react-dom": "^15.0.1",
+    "react-modal": "^1.4.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "webpack": "^1.13.0"
