@@ -3,9 +3,19 @@ import ReactDOM  from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router';
 import ParentComponent from './component/ParentComponent';
 import WipComponent from './component/WipComponent';
+import { findIndex, fill } from 'core-js/library/fn/array/virtual';
+import { includes }from 'core-js/library/fn/array/';
+import { assign } from 'core-js/library/fn/object';
 
  const  HelloReact =  React.createClass({
   render() {
+      console.log(Array(10)::fill(0).map((a, b) => b * b)::findIndex(it => it && !(it % 8)));
+      var obj = {a: "fa"};
+      console.log(assign({b: 'ooo'}, obj));
+      var array = ["","faf"]
+      console.log(array.includes("faf"));
+
+
     return (
     <div>
         <div>
