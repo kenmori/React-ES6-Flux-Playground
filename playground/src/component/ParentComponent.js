@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import ChildComponent from './ChildComponent';
+import ChildrenComponent from './ChildrenComponent';
 import FormParentComponent from './FormParentComponent';
 import InputValidation from './InputValidation';
 import TodoComponent from './TodoComponent';
@@ -10,6 +11,7 @@ import ReactCSSTransitionGroupExample from './ReactCSSTransitionGroupExample';
 import UpdateComponent from './UpdateComponent';
 import ImmutableComponent from './ImmutableComponent';
 import TimerMixinComponent from './TimerMixinComponent';
+import CommunicateBetweenComponents from './CommunicateBetweenComponents';
 import ModalComponent from './ModalComponent';
 // import ReactCSSTransitionGroupImageCarousel from
 // './ReactCSSTransitionGroupImageCarousel';
@@ -154,7 +156,8 @@ export default class ParentComponent extends React.Component {
         </Modal>
         <hr />
         <FormParentComponent {...props} text={'override'} renderType={this.state.renderType} />
-      
+        <ChildrenComponent />
+        <CommunicateBetweenComponents />
         <h2>I'm ParentComponent</h2>
         <ChildComponent user={user} func={this._upDateChildClickCount} count={this.state.count} name={this.state.name} renderType={1} />
         <hr />
@@ -201,8 +204,8 @@ var contacts = [
       render(){
         return (
           React.createElement('div', {},
-            React.createElement('p', {}, 'contact',
-              React.createElement('ul', {}, listObj)
+                React.createElement('p', {}, 'contact',
+                    React.createElement('ul', {}, listObj)
             )
           )
         );
