@@ -48,7 +48,7 @@ gulp.task('browser-sync', ['nodemon'], function() {
 gulp.task('nodemon', function() {
   return nodemon({
     script: 'server.js'
-  }).on('restart', function() {
+  }).on('restart', function(err) {
     browserSync.reload();
   });
 });

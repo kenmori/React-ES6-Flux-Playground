@@ -12,6 +12,7 @@ import UpdateComponent from './UpdateComponent';
 import ImmutableComponent from './ImmutableComponent';
 import TimerMixinComponent from './TimerMixinComponent';
 import CommunicateBetweenComponents from './CommunicateBetweenComponents';
+import InputStateUpdateComponent from './InputStateUpdateComponent';
 import ModalComponent from './ModalComponent';
 // import ReactCSSTransitionGroupImageCarousel from
 // './ReactCSSTransitionGroupImageCarousel';
@@ -155,14 +156,15 @@ export default class ParentComponent extends React.Component {
                 </form>
         </Modal>
         <hr />
-        <FormParentComponent {...props} text={'override'} renderType={this.state.renderType} />
+
         <ChildrenComponent />
         <CommunicateBetweenComponents />
+        <InputStateUpdateComponent />
         <h2>I'm ParentComponent</h2>
+        <FormParentComponent {...props} text={'override'} renderType={this.state.renderType} />
         <ChildComponent user={user} func={this._upDateChildClickCount} count={this.state.count} name={this.state.name} renderType={1} />
         <hr />
         <ChildComponent user={user} name={this.state.name} renderType={2} />
-
         <button className='btn btn-primary' onClick={this._click}>push</button>
         <ImmutableComponent />
         <listElementRoot />

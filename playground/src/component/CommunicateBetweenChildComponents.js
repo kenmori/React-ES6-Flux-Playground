@@ -9,9 +9,11 @@ export default class CommunicateBetweenChildComponents extends React.Component {
         };
         this.add = this.add.bind(this);
     }
-    add(){
-      this.setState({
-        value: this.state.value + 1
+    add = ()=>{
+      this.setState(function (state, props){
+          return {
+            value : state.value + 1
+          }
       })
     }
     render(){

@@ -48,6 +48,7 @@ export default class FormChildComponent extends React.Component {
     return (
       <span>
         <div>
+          <hr />
           <h2>同一メソッドで2回のsetStateを同時更新</h2>
           <ul>
             <li>1つのメソッド内で2度setStateして同時に更新しています</li>

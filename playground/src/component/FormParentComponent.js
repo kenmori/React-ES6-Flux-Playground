@@ -22,10 +22,7 @@ export default class FormParentComponent extends React.Component {
     return(
         <div>
             <FormChildComponent num={1} />
-            <hr />
         </div>
     );
   }
 };
-
-
