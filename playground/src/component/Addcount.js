@@ -1,13 +1,17 @@
 import  React from 'react';
-
+import  update from 'react-addons-update';
 export default class AddCount extends React.Component {
     constructor(props){
       super(props);
+        this.state = {
+            value : 2
+        }
       this.addCount = this.addCount.bind(this);
     }
     addCount(){
         this.props.addCountToParent(this.props.count);
     }
+
     render(){
       return (
         <div>
@@ -19,7 +23,11 @@ export default class AddCount extends React.Component {
           </ul>
           <p className={this.props.count % 3 == 0 && this.props.count !== 0 && 'three'}>{this.props.count}</p>
           <button className='btn btn-primary' onClick={this.addCount}>add</button>
+            <h2>use update by react-addons-updates</h2>
+        <div>{this.state.value}</div>
+            <button>add</button>
         </div>
+
       );
     }
 };

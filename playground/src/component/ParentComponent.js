@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import ChildComponent from './ChildComponent';
 import ChildrenComponent from './ChildrenComponent';
+import ButtonComponent from './ButtonComponent';
 import FormParentComponent from './FormParentComponent';
 import InputValidation from './InputValidation';
 import TodoComponent from './TodoComponent';
@@ -12,6 +13,7 @@ import UpdateComponent from './UpdateComponent';
 import ImmutableComponent from './ImmutableComponent';
 import TimerMixinComponent from './TimerMixinComponent';
 import CommunicateBetweenComponents from './CommunicateBetweenComponents';
+import ListComponent from './ListComponent';
 import InputStateUpdateComponent from './InputStateUpdateComponent';
 import ModalComponent from './ModalComponent';
 // import ReactCSSTransitionGroupImageCarousel from
@@ -156,7 +158,8 @@ export default class ParentComponent extends React.Component {
                 </form>
         </Modal>
         <hr />
-
+        <ButtonComponent />
+        <ListComponent />
         <ChildrenComponent />
         <CommunicateBetweenComponents />
         <InputStateUpdateComponent />

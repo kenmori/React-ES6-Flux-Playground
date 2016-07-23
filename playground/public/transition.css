@@ -79,3 +79,19 @@ body.container {
 .lsn > li{
   list-style:none;
 }
+
+.onButton{
+  -webkit-transition-duration: .3s;
+  -webkit-transition-timing-function: linear;
+  transform:translateX(50px);
+}
+.offButton{
+  -webkit-transition-duration: .3s;
+  -webkit-transition-timing-function: linear;
+  transform:translateX(0px);
+}
+.wrapButton{
+  display: inline-block;
+  height: 10px;
+  background: #8fe250;
+}

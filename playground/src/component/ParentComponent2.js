@@ -1,14 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-export default class default extends React.Component {
+export default class ParentComponent2 extends React.Component {
     constructor(props){
         super(props);
     }
     render(){
         return (
             <div>
-                <h2>default</h2>
+                iiiiiiiiiii
+            {console.log(this.props.children, "pppp")}
             </div>
         )
     }
