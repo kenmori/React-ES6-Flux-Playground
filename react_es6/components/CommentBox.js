@@ -1,13 +1,13 @@
-import React from 'react'
-import CommentList from './CommentList'
-import CommentForm from './CommentForm'
-import ActionCreater from './ActionCreater'
-import Store from './Store'
-import EventEmitter from './EventEmitter'
+import React from 'react';
+import CommentList from './CommentList';
+import CommentForm from './CommentForm';
+import ActionCreater from './ActionCreater';
+import Store from './Store';
+import EventEmitter from './EventEmitter';
 var dispatcher = new EventEmitter();
 var action = new ActionCreater(dispatcher);
 var store = new Store(dispatcher);
-import $ from 'jquery'
+import $ from 'jquery';
 
 export default class CommentBox extends React.Component {
   constructor(props){
