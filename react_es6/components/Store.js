@@ -1,4 +1,4 @@
-import Emitter from './EventEmitter'
+import Emitter from './EventEmitter';
 
 export default class Store extends Emitter{
   constructor(dispatcher) {
