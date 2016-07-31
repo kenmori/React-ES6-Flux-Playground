@@ -1,20 +1,22 @@
-import React from 'react'
+import React from 'react';
+import $ from 'jquery';
+import CountComponent from './component/CountComponent';
+import FormComponent from './component/FormComponent';
 
-class CommentBox extends React.Component {
-  constructor(props) {
+export default class HelloReact extends React.Component {
+  constructor(props){
     super(props);
   }
-
   render() {
-    return(
-      <div className='commentBox'>
-        Hello, world! I am a CommentBox.
+    return (
+      <div>
+        {/*<CountComponent />*/}
+        <FormComponent />
       </div>
-    );
+      );
   }
 }
-
 React.render(
-  <CommentBox />,
-  document.getElementById('container')
+  <HelloReact />,
+  document.getElementById('content')
 );
