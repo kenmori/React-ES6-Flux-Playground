@@ -1,16 +1,27 @@
-## like a 'LINE' Message Component 
-![http://kenjimorita.jp/wp-content/uploads/2016/02/fafa.gif](http://kenjimorita.jp/wp-content/uploads/2016/02/fafa.gif)
 
-- 1, mkdir [your_project_folder]
-- 2, cd [your_project_folder]
-- 3, git clone https://github.com/kenmori/React-ES6-Flux-Playground.git
-- 4, cd React-ES6-Flux-Playground/react_es6
-- 5, npm install
-- 6, gulp
-- 7, http://localhost:4000/
-※not http://localhost:8080/
+## 【React × ES6 × Flux】を手っ取り早く学びたい人の為にサンプル作ったよ【3の倍数と3が付くときだけ猫になるCounter】
 
-## enjoy
-input 'text' as you like and then push button post
+[http://kenjimorita.jp/wp-content/uploads/2016/02/AWS11-51.gif](http://kenjimorita.jp/wp-content/uploads/2016/02/AWS11-51.gif)
 
-if you want to delete default text, you can do it on comments.json
+[http://kenjimorita.jp/react-x-es6-x-flux/](http://kenjimorita.jp/react-x-es6-x-flux/)
+
+
+# React Tutorial ES6
+
+This is [the React tutorial](http://facebook.github.io/react/docs/tutorial.html) that was rewritten in ECMAScript 2015 aka ES6.
+
+## To use
+
+They all serve static files from `public/` and handle requests to `comments.json` to fetch or add data.
+
+### Setup
+
+```sh
+npm install
+```
+
+### Start server
+
+```sh
+gulp
+```
