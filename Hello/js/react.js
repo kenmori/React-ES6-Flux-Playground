@@ -78,6 +78,12 @@ var AutoFocusUtils = {
   }
 };
 
+
+var obj = Object.create(Object.prototype, {
+   x : {value: 2, writeable: true, enumerable: true, configurable: true},
+   y : {value: 3, writeable: true, enumerable: true, configurable: true}
+})
+
 module.exports = AutoFocusUtils;
 },{"108":108,"138":138,"65":65}],3:[function(_dereq_,module,exports){
 /**
@@ -18634,7 +18640,7 @@ module.exports = performanceNow;
  *
  * @providesModule shallowEqual
  * @typechecks
- * 
+ *
  */
 
 'use strict';
