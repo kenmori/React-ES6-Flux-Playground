@@ -1,0 +1,277 @@
+<!doctype html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>test</title>
+</head>
+<!-- http://mae.chab.in/archives/2747 -->
+<body>
+  <div id="content"></div>
+  <script src="../dist/react-build.js"></script>
+  <script>
+  //Reactだけで書いたときの実装。ここからFluxにするには？？
+  //Flux はFlux実装する箇所
+  var TestApp = React.createClass({
+    getInitialState: function(){
+        return TestStore.getAll();
+    },
+    render : function(){
+      return (
+        <div className="testApp">
+          <TestForm/>
+          <TestDisplay data={ this.state.value } />
+        </div>
+      );
+    }
+  });
+  var TestForm = React.createClass({
+    send: function(e){
+      e.preventDefault();
+      var testValue = React.findDOMNode(this.refs.test_value).value.trim();
+      TestAction.test(testValue);
+      React.findDOMNode(this.refs.test_value).value = "";
+      return;
+    },
+    render: function(){
+      return (
+        <form>
+          <input type="text" ref="test_value" />
+          <button onClick={ this.send }>送信</button>
+        </form>
+      );
+    }
+  });
+  var TestDisplay = React.createClass({
+    var message = this.props.data;
+    render: function(){
+      return (
+        <div>{ message }</div>
+      );
+    }
+  });
+  ReactDOM.render(
+    <TestApp />,
+    document.getElementById('content')
+  )
+
+
+  // Action実装
+  //
+  //
+  //
+  // ActionはViewからのアクションに応じて（状況によりサーバと通信を行い）適切なデータをSoterに伝える場所です。
+  // TestActionオブジェクトを作り、
+  // Viewから実行できるメソッドを定義します。
+  // ここでは便宜的にtest()メソッドとしました。
+  //View上でtest()メソッドが実行されると、
+  //testDispatcherインスタンスのdispatch()メソッドが実行されるようにするのがポイントです。
+  var CHANGE_EVENT = "change";
+  var testConstants = {
+      TEST : "test"
+  };
+  var TestAction = {
+    test: function(testValue){
+      testDispatcher.dispatch({
+        actionType: testConstants.TEST,
+        value: testValue
+      })
+    }
+  }
+  //Storeで実装するtestDispatcherインスタンスのregister()メソッドは、
+  //dispatch()メソッドを実行すると、
+  //その引数にセットした値（オブジェクト/ペイロード）を受け取ってくれるようになっています。
+
+//Store内には処理の内容に合わせて複数のregister()メソッドを実装する場合もあります。
+//dispatch()メソッドが実行されると、
+//実装したすべてのregister()メソッドがdispatch()メソッドの引数にセットした値を受け取るようになっています。
+//従って、それぞれのregister()メソッド内で実行する処理の出し分けができるように、
+//dispatch()メソッドの引数にセットするオブジェクトには、
+//識別用に"actionType"というキーを設けておくのがポイントとなります。
+
+
+//View（React）の修正
+//Actionを実装したことで、
+//React内で行っていたクリックイベントによる処理が必要なくなります。
+//Viewを修正していきます。
+//
+//35行目
+//
+//ボタンがクリックされた時の処理をActionで行うようにしたので、
+//rootのTestAppコンポーネント内で定義していた処理は削除します。
+//
+//18行目とか
+//
+//
+//
+//
+//
+//
+//Store 実装
+//
+//
+//次に、TestStoreオブジェクトを作り、
+//上で定義した_testオブジェクトを扱う処理を書いていきます。
+//まずはベースとなる部分から書いていきます。
+//ここでは、register()メソッドを使って、
+//Action内で実行されたdipatcher()メソッドの引数にセットされた値を取得し、
+//_testオブジェクトの値を変更するような処理となっています。
+//
+//
+//
+//
+var _test = { valu: null};
+var TestStore = {
+  //payloadによって、dispatch()メソッドの引数にセットされた値を取得
+  dispatcherIndex: testDispatcher.register(function(payload){
+    //actiontype識別子による処理の判別
+    if(payload.actionType === "test"){
+      _test.value = payload.value;
+    }
+  })
+}
+//testDispatcherインスタンスのregister()メソッドは、
+//Action内のdispatch()メソッドが実行されると、
+//自動的にdispatch()メソッドの引数にセットした値を取得し、
+//register()メソッドの引数にセットしたコールバック関数が実行されるようになっています。
+//Store内にregister()メソッドを複数書く場合
+
+//Store内にはregister()メソッドを複数書くことができます。
+//その場合、Action内のdispatch()メソッドが実行されるとすべてのregister()メソッドでdispatch()メソッドによる値を取得するようになります。
+//Actionの説明の部分でも書きましたが、dispatch()メソッドの引数にセットしたオブジェクトに定義した"actionType"の値を見て、
+//register()メソッド内の処理を実行させるようにするのがポイントです。
+//
+//register()メソッドが実行されると、
+//戻り値としてトークンを返します。
+//FluxのDispatcherにはwaitFor()メソッドというものが用意されていて、
+//そのwaitFor()メソッドにトークンを渡すことによって、
+//register()メソッドの実行順序をコントロールすることも可能になっています。
+//
+//
+//Store 実装2
+//
+//viewでStoreの値を取得する
+//現状ではViewとStoreは別々のオブジェクトであり結合されていない状態なので、
+//StoreからViewへデータを渡す仕組みが必要となってきます。
+//
+//Storeの値を取得するメソッドを作成
+//まず、StoreからViewへ_testオブジェクトを渡すためのgetAll()メソッドを作ります。
+//このメソッドをView上で（getInitialState()メソッドやsetState()メソッドを通して）実行することで、StoreのデータをView上で取得できるようになります。
+//
+//
+//追加
+var TestStore = {
+  getAll: function(){
+    //_testオブジェクトを渡す
+    return _test;
+  },
+  dispatcherIndex: testDispatcher.register(function(payload){
+    if(payload.actionType === "test"){
+      _test.value = payload.value;
+    }
+  })
+};
+
+
+//ViewのrootコンポーネントのgetInitialState()メソッドの処理の部分をgetAll()メソッドが実行されるように修正しておくと、
+//初期表示時に_testオブジェクトの値が使われるようになります。
+//
+//17行目
+//
+//
+//Storeの状態の変化をViewに伝える
+//
+//次に、_testオブジェクトの値が変更されたタイミングで、
+//Veiwを変更させるようにしていきます。
+//Viewの値を変更するには、
+//View内でsetState()メソッドを実行させることで可能となります。
+//なのでここでの実装のポイントは、
+//「_testオブジェクトの値が変更されたかをView側でどのようにして取得するか」ということになります。
+//
+//
+//
+//ここで上記で読み込んだNode.jsのモジュールであるEventsモジュールのEventEmitterオブジェクトを使用していきます。
+//このEventEmitterは、Node.js上でのカスタムイベントの実装を可能にします。
+//いわゆるObserverパターンやPub/Subパターンを実装する際に役立ちます。
+//TestStoreオブジェクトにassign()メソッドを使ってEventEmitterオブジェクトをマージすると、
+//TestStoreオブジェクト内でEventEmitterオブジェクトが扱えるようになります。
+//そのようにして、Store内にカスタムイベントを実装していきます。
+//詳細はソース内のコメントを見てください。
+//
+//
+//
+var _test = { value : null };
+var TestStore = assign({}, EventEmitter.prototype, {
+getAll: function(){
+  return _test;
+},
+//イベントを発生させるメソッドを定義
+emitChange: function(){
+//イベント名を"change"としてイベントを発生
+  this.emit(CHANGE_EVENT);
+},
+addChangeListener: function(callback){
+  //"change"イベントの発生を取得したら、引数にセットされたコールパックを実行
+  this.on("change", callback);
+},
+dispatcherIndex: testDispatcher.regster(function(palyload){
+    if(payload.actionType === testConstants.TEST){
+      _test.value = payload.value;
+      //emitChange()メソッドを実行(イベント発生)
+      TestStore.emitChange();
+    }
+  })
+});
+
+//Store内で_testオブジェクトの値を変更したら、TestStore.emitChange()メソッドが実行され、
+//"change"イベントが発生するようになりました。
+//View側でこれを受け取り、setState()メソッドを実行し、
+//Viewを再描画するようにします。
+//
+//
+//
+//
+// View側の実装は以下の通りです。
+// ReactのcomponentDidMount()メソッドを使って、
+// TestStore.addChangeListener()メソッドにsetState()メソッドが実行されるコールバック関数を登録します。
+// setState()メソッドの引数にはTestStore.getAll()メソッドをセットしておきます
+
+var TestApp = React.createClass({
+  getInitialState: function(){
+      return TestStore.getAll();
+  },
+  componentDidMount: function(){
+    var self = this;
+    //TestStoreのaddChangeListener()メソッドにコールバック関数をセットし実行
+    TestStore.addChangeListener(function(){
+    //TestStore.getAll()を引数にセットしsetState()メソッドを実行
+    //Viewが再描画される
+      self.setState(TestStore.getA());
+    });
+  },
+  render : function(){
+    return (
+      <div className="testApp">
+        <TestForm/>
+        <TestDisplay data={ this.state.value } />
+      </div>
+    );
+  }
+});
+//componentDidMount()メソッドは、
+//初期描画が発生した直後に一度実行されるメソッドです。
+//イベントリスナーなどを使ったイベントの登録などに使用されます。
+
+
+
+//Fluxで実装したサンプルのソースコード
+//これでFluxによる上記サンプルの実装が可能となります。
+//最後に、これまで説明してきたコードをひとつにまとめておきます。
+//Fluxは、アクションタイプ名やイベント名を定数で書くのが通例のようなので、上記では複雑にならないように敢えて使いませんでしたが、以下では定数を使うようにしています。
+
+
+</script>
+
+</body>
+
+</html>
